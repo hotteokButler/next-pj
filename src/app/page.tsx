@@ -1,9 +1,12 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+
+/*
+main page
+url : '/'
+*/
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main >
       Home
     </main>
   );
