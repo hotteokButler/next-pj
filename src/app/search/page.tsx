@@ -1,9 +1,5 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-    </main>
-  );
+export default function Search() {
+  return <h2>Search</h2>;
 }
