@@ -25,5 +25,18 @@ export const GlobalStyle = createGlobalStyle`
     display : block;
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
+  }
+  
+  img {
+    display: inline-block;
+    max-width: 100%;
+    height:  auto;
+  }
+
+  button {
+    outline: none;
+    border:  none;
+    background-color: transparent;
   }
 `;
