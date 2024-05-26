@@ -4,7 +4,7 @@ main page
 url : '/'
 */
 
-export default function Home() {
+export default function RootPage() {
   return (
     <main >
       Home
