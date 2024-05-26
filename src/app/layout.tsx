@@ -4,6 +4,7 @@ import './globals.css';
 import StyledComponentsRegistry from '@/lib/registry';
 import ThemeClient from '@/components/themeClient';
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {

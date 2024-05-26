@@ -6,7 +6,7 @@ url : '/'
 
 export default function RootPage() {
   return (
-    <main >
+    <main>
       Home
     </main>
   );
