@@ -4,8 +4,8 @@ export const MainWrapper = styled.main`
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 100%;
-  height: 100vh;
+  max-width: 100dvw;
+  height: 100dvh;
   padding: 1rem;
 
   /* media Q */
@@ -77,7 +77,7 @@ export const MainLis = styled.div<{ $mggap?: string }>`
   text-align: center;
   margin-bottom: ${(props) => props.$mggap || '0px'};
   @media ${({ theme }) => theme.mediaSize?.tablet} {
-  align-items: center;
+    align-items: center;
   }
 `;
 
