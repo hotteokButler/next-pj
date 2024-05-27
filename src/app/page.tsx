@@ -35,7 +35,7 @@ export default function RootPage() {
           <S.MainSection>
             <span>또는</span>
           </S.MainSection>
-          <Link href='/'>
+          <Link href='/i/flow/signup'>
             <S.MainButton
               $noneIcon={true}
               $bgcolor='#1d9bf0'
@@ -49,15 +49,15 @@ export default function RootPage() {
           </Link>
         </S.MainLis>
         <S.MainLis>
-          <S.MainSubTitle $ftsize='1.2rem'>이미 트위터에 가입하셨나요?</S.MainSubTitle>
-          <Link href='/'>
+          <S.MainSubTitle $ftsize='1.2rem' $smft='4vw'>이미 트위터에 가입하셨나요?</S.MainSubTitle>
+          <Link href='/login'>
             <S.MainButton
               $noneIcon={true}
               $fontcolor='#1d9bf0'
               $hfontcolor='#1272b2'
               $hbgcolor='#0f86d63a'
             >
-              <span>계정만들기</span>
+              <span>로그인</span>
             </S.MainButton>
           </Link>
         </S.MainLis>
