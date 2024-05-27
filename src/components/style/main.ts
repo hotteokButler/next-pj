@@ -119,6 +119,7 @@ export const MainButton = styled.button<IMainButton>`
   /* media Q */
   @media ${({ theme }) => theme.mediaSize?.tablet} {
     width: 90vw;
+    justify-content: center;
   }
 `;
 
