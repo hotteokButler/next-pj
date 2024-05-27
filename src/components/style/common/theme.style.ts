@@ -3,14 +3,16 @@ import { DefaultTheme } from 'styled-components';
 const colors = {
   white: '#fff',
   black: '#232323',
-  blue: '1d9bf0',
-  gray: 'cfd9de',
+  blue: '#1d9bf0',
+  gray: '#cfd9de',
+  border : '#eee',
+  pointColor: '#1d9bf0'
 };
 
 const deviceSizes = {
-  mobile: "420px",
-  tablet: "768px",
-  laptop: "1024px",
+  mobile: '420px',
+  tablet: '768px',
+  laptop: '1024px',
 };
 
 const device = {
@@ -24,7 +26,7 @@ export type ThemeMediaSize = typeof device;
 
 export const lightTheme: DefaultTheme = {
   colors,
-  mediaSize:device
+  mediaSize: device,
 };
 
 export const darkTheme: DefaultTheme = {

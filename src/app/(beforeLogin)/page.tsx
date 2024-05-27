@@ -50,7 +50,7 @@ export default function RootPage() {
         </S.MainLis>
         <S.MainLis>
           <S.MainSubTitle $ftsize='1.2rem' $smft='4vw'>이미 트위터에 가입하셨나요?</S.MainSubTitle>
-          <Link href='/login'>
+          <Link href='/i/flow/login'>
             <S.MainButton
               $noneIcon={true}
               $fontcolor='#1d9bf0'

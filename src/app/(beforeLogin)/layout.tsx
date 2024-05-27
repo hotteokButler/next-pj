@@ -1,5 +1,10 @@
-import React from 'react';
+import {ReactNode} from "react";
 
-export default function BeforeLoginlayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+export default function BeforeLoginlayout({ children, modal }: { children: ReactNode; modal: ReactNode }) {
+  return (
+    <div>
+      {children}
+      {modal}
+    </div>
+  );
 }
