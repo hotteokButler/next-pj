@@ -33,10 +33,13 @@ export const MainTitle = styled.h2`
   font-weight: bold;
   font-size: 4rem;
   padding: 3rem 0;
+  line-height: 1.2em;
+  word-break: keep-all;
 
   @media ${({ theme }) => theme.mediaSize?.tablet} {
     font-size: 9.4vw;
     padding: 5% 0;
+    text-align: center;
   }
 `;
 
@@ -47,13 +50,14 @@ export const MainSubTitle = styled.p<{ $ftsize?: string; $smft?: string }>`
   @media ${({ theme }) => theme.mediaSize?.tablet} {
     font-size: ${(props) => props.$ftsize || '5.3vw'};
     padding: 4% 0;
+    text-align: center;
   }
 `;
 
 export const MainContent = styled.div`
   width: 50%;
   width: 50%;
-  padding: 1.5rem 1rem;
+  padding: 2.5rem 1rem;
   /* media Q */
   @media ${({ theme }) => theme.mediaSize?.tablet} {
     width: 100%;
@@ -72,6 +76,9 @@ export const MainLis = styled.div<{ $mggap?: string }>`
   padding: 1rem 0;
   text-align: center;
   margin-bottom: ${(props) => props.$mggap || '0px'};
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  align-items: center;
+  }
 `;
 
 interface IMainButton {
