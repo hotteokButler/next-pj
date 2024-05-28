@@ -95,21 +95,20 @@ export const ModalInputText = styled.input`
   }
 `;
 
-
-export const ModalSubmitBtn = styled.button`
-    display: block;
-    width: 80%;
-    max-width: 480px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: ${p => p.theme.colors?.pointColor};
-    color: ${p => p.theme.colors?.white};
-    font-weight: bold;
-    border-radius: 10rem;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.7;
-    }
-`
+export const ModalSubmitBtn = styled.button<{ $varified: boolean }>`
+  display: block;
+  width: 80%;
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: ${(p) => (p.$varified ? p.theme.colors?.pointColor : p.theme.colors?.gray)};
+  color: ${(p) => p.theme.colors?.white};
+  font-weight: bold;
+  border-radius: 10rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+`;

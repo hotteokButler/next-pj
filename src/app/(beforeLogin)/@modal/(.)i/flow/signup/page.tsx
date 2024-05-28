@@ -1,6 +1,7 @@
 'use client';
-import * as S from "@/components/style/modal";
+
+import SignUpModal from "@/app/(beforeLogin)/_component/SignUpModal";
 
 export default function Signup() {
-  return <S.ModalWrap>loginModal</S.ModalWrap>;
+  return <SignUpModal/>;
 }
