@@ -1,3 +1,5 @@
+import LoginModal from "@/app/(beforeLogin)/_component/LoginModal";
+
 export default function Login() {
-  return <h2>login</h2>;
+  return <LoginModal/>;
 }
