@@ -1,6 +1,7 @@
 'use client';
 import * as S from '@/components/style/modal';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { BsTwitterX } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
 
@@ -14,7 +15,12 @@ export default function SignUpModal() {
   const [varified, setVarified] = useState(false);
   const [state, setState] = useState(false);
 
-  const onClickCloseBtn = () => {};
+  const router = useRouter();
+  
+  const onClickCloseBtn = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.back();
+  };
   const onSubmit = () => {};
   const onChangeId = () => {};
   const onChangeNickname = () => {};
