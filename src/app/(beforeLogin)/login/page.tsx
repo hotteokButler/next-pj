@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Main from '../_component/Main';
 
 /*
 기본적으로 server component라서 
@@ -18,5 +19,5 @@ export default function Login() {
   const router = useRouter();
   router.replace('/i/flow/login', { scroll: false });
   
-  return null;
+  return <Main/>;
 }
