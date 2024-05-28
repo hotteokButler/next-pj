@@ -50,7 +50,7 @@ export default function LoginModal() {
               onChange={onChangePassword}
             />
           </S.ModalLabel>
-          <S.ModalSubmitBtn $varified={varified}>로그인</S.ModalSubmitBtn>
+          <S.ModalSubmitBtn $varified={varified} disabled={varified}>로그인</S.ModalSubmitBtn>
         </S.ModalForm>
 
         {/* 본문 E N D =============== */}

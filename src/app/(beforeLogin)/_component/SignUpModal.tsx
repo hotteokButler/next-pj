@@ -75,7 +75,7 @@ export default function SignUpModal() {
               onChange={onChangeFile}
             />
           </S.ModalLabel>
-          <S.ModalSubmitBtn $varified={varified}>가입하기</S.ModalSubmitBtn>
+          <S.ModalSubmitBtn $varified={varified} disabled={varified}>가입하기</S.ModalSubmitBtn>
         </S.ModalForm>
 
         {/* 본문 E N D =============== */}
