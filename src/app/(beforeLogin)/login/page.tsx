@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import Main from '../_component/Main';
+import Main from '../_components/Main';
 
 /*
 기본적으로 server component라서 
