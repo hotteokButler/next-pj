@@ -6,7 +6,7 @@ const colors = {
   blue: '#1d9bf0',
   gray: '#cfd9de',
   border : '#eee',
-  pointColor: '#1d9bf0'
+  pointColor: '#1d9bf0',
 };
 
 const deviceSizes = {
