@@ -58,7 +58,7 @@ export default function LeftAsideCon() {
             )}
 
             <S.ComposePostBtn>
-              <Link href='/home'>
+              <Link href='/compose/post'>
                 <RiQuillPenLine />
                 <span>게시하기</span>
               </Link>
