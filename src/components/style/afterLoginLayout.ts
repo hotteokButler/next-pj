@@ -45,10 +45,12 @@ export const LeftSideWrap = styled.header`
   & > div[aria-label='side_main_menu'] {
     position: fixed;
     width: 275px;
+    padding: 10px;
     height: 100%;
     top: 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: stretch;
   }
   @media ${({ theme }) => theme.mediaSize?.desktop} {
@@ -59,7 +61,6 @@ export const LeftSideWrap = styled.header`
   }
 `;
 export const LeftSideMenu = styled.div`
-  padding: 0 10px;
   width: 100%;
   max-width: 275px;
 `;
@@ -142,6 +143,76 @@ export const LinkTxt = styled.span<{ $state?: boolean }>`
   }
 `;
 
+export const ComposePostBtn = styled.div`
+  width: 90%;
+  a {
+    width: 100%;
+    justify-content: center;
+    color: ${(p) => p.theme.colors?.white};
+    background: ${(p) => p.theme.colors?.pointColor};
+  }
+
+  & a:hover {
+    background: ${(p) => p.theme.colors?.darkBlue};
+  }
+  svg {
+    display: none;
+    width: 35px;
+    height: 35px;
+    fill: ${(p) => p.theme.colors?.white};
+  }
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    margin: 0 auto;
+    svg {
+      display: block;
+      width: 28px;
+      height: 28px;
+    }
+    span {
+      display: none;
+    }
+  }
+`;
+
+export const LogoutBtn = styled.button`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 4px 0;
+  border-radius: 50px;
+  cursor: pointer;
+  &:hover {
+    background: ${(p) => p.theme.colors?.border};
+  }
+
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    padding: 0;
+    margin: 0 auto 15px;
+    justify-content: center;
+    span {
+      display: none;
+    }
+    &:hover {
+      background: none;
+    }
+  }
+`;
+export const LogoutBtnTxt = styled.span<{ $isId: boolean }>`
+  display: block;
+  margin: 0px 0px 2px 8px;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: ${(p) => (p.$isId ? '500' : '700')};
+  color: ${(p) => (p.$isId ? p.theme.colors?.darkgray : 'inherit')};
+  svg {
+    vertical-align: text-top;
+  }
+
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  }
+`;
+
 export const OuterWrap = styled.div`
   position: relative;
   display: flex;
@@ -165,31 +236,5 @@ export const RightSideWrap = styled.aside`
     width: 350px;
     margin: 0 70px 0 0;
     height: 100%;
-  }
-`;
-
-export const ComposePostBtn = styled.div`
-  width: 90%;
-  a {
-    width: 100%;
-    justify-content: center;
-    color: ${(p) => p.theme.colors?.white};
-    background: ${(p) => p.theme.colors?.pointColor};
-  }
-  svg {
-    display: none;
-    width: 35px;
-    height: 35px;
-    fill: ${(p) => p.theme.colors?.white};
-  }
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
-    margin: 0;
-    svg {
-      width: 28px;
-      height: 28px;
-    }
-    span {
-      display: none;
-    }
   }
 `;

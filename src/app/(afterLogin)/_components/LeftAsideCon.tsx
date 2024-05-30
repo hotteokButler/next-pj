@@ -7,6 +7,7 @@ import { IoMailOutline, IoPersonOutline } from 'react-icons/io5';
 import { RiQuillPenLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
+import LogoutBtn from './LogoutBtn';
 
 export default function LeftAsideCon() {
   const segment = useSelectedLayoutSegment();
@@ -14,6 +15,7 @@ export default function LeftAsideCon() {
   const user = {
     id: null,
   };
+
   return (
     <S.LeftSideWrap>
       <div aria-label='side_main_menu'>
@@ -63,6 +65,8 @@ export default function LeftAsideCon() {
             </S.ComposePostBtn>
           </S.TabMenu>
         </S.LeftSideMenu>
+
+        <LogoutBtn/>
       </div>
     </S.LeftSideWrap>
   );
