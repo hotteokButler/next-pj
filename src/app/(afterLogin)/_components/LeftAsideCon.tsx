@@ -28,19 +28,19 @@ export default function LeftAsideCon() {
         {/* tab menus ==== */}
         <S.TabMenu>
           <Link href='/home'>
-            <S.LinkIcon $state={segment ==='home'}>
+            <S.LinkIcon $state={segment ==='home'} $getNew={false}>
               <GoHome />
             </S.LinkIcon>
             <S.LinkTxt $state={segment ==='home'}>홈</S.LinkTxt>
           </Link>
           <Link href='/explore'>
-            <S.LinkIcon $state={segment === 'explore'}>
+            <S.LinkIcon $state={segment === 'explore'} $getNew={false}>
               <GoSearch />
             </S.LinkIcon>
             <S.LinkTxt $state={segment === 'explore'}>탐색하기</S.LinkTxt>
           </Link>
           <Link href='/messages'>
-            <S.LinkIcon $state={segment === 'messages'}>
+            <S.LinkIcon $state={segment === 'messages'} $getNew={false}>
               <IoMailOutline />
             </S.LinkIcon>
             <S.LinkTxt $state={segment === 'messages'}>쪽지</S.LinkTxt>
@@ -48,7 +48,7 @@ export default function LeftAsideCon() {
 
           {user.id && (
             <Link href={`/${user.id}`}>
-              <S.LinkIcon $state={segment === user.id}>
+              <S.LinkIcon $state={segment === user.id} $getNew={false}>
                 <IoPersonOutline />
               </S.LinkIcon>
               <S.LinkTxt $state={segment === user.id}>프로필</S.LinkTxt>

@@ -63,13 +63,19 @@ export const TabMenu = styled.nav`
   }
 `;
 
-export const LinkIcon = styled.span<{ $state?: boolean }>`
+export const LinkIcon = styled.span<{ $getNew?: boolean; $state?: boolean }>`
   position: relative;
   margin: 0 4px 0 0;
   svg {
     width: 35px;
     height: 35px;
+    ${(p) => p.$state && 'stroke-width: 1 !important;'}
+    rect {
+      ${(p) => p.$state && 'stroke-width: 50 !important;'}
+    }
   }
+
+  /* new 하이라이트 처리 */
   &:after {
     content: '';
     clear: both;
@@ -81,8 +87,8 @@ export const LinkIcon = styled.span<{ $state?: boolean }>`
     position: absolute;
     right: 0px;
     top: 0px;
-    opacity: ${(p) => (p.$state ? '1' : '0')};
-    visibility: ${(p) => (p.$state ? 'visible' : 'hidden')};
+    opacity: ${(p) => (p.$getNew ? '1' : '0')};
+    visibility: ${(p) => (p.$getNew ? 'visible' : 'hidden')};
   }
 `;
 
