@@ -13,12 +13,14 @@ const deviceSizes = {
   mobile: '420px',
   tablet: '768px',
   laptop: '1024px',
+  desktop: '1450px',
 };
 
 const device = {
-  mobile: `screen and (max-width: ${deviceSizes.mobile})`,
-  tablet: `screen and (max-width: ${deviceSizes.tablet})`,
-  laptop: `screen and (max-width: ${deviceSizes.laptop})`,
+  mobile: `all and (max-width: ${deviceSizes.mobile})`,
+  tablet: `all and (max-width: ${deviceSizes.tablet})`,
+  laptop: `all and (max-width: ${deviceSizes.laptop})`,
+  desktop: `all and (max-width: ${deviceSizes.desktop})`,
 };
 
 export type ThemeColorsType = typeof colors;

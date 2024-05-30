@@ -6,6 +6,12 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100dvw;
   min-height: 100dvh;
+`;
+
+export const InnerWrapper = styled.div`
+  position: inherit;
+  width: 100dvw;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -29,15 +35,30 @@ export const ConLogo = styled.div`
   }
 `;
 
-export const LeftSideWrap = styled.aside`
+export const LeftSideWrap = styled.header`
   position: relative;
   width: 275px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  & > div[aria-label='side_main_menu'] {
+    position: fixed;
+    width: 275px;
+    height: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    width: 75px;
+    & > div[aria-label='side_main_menu'] {
+      width: 75px;
+    }
+  }
 `;
 export const LeftSideMenu = styled.div`
-  position: fixed;
   padding: 0 10px;
   width: 100%;
   max-width: 275px;
@@ -58,13 +79,23 @@ export const TabMenu = styled.nav`
       background: ${(p) => p.theme.colors?.border};
     }
   }
-  span {
-    display: inline-block;
+
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    a {
+      padding: 10px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      justify-content: center;
+      margin: 0 auto;
+    }
   }
 `;
 
 export const LinkIcon = styled.span<{ $getNew?: boolean; $state?: boolean }>`
   position: relative;
+  display: inline-block;
+
   margin: 0 4px 0 0;
   svg {
     width: 35px;
@@ -90,12 +121,34 @@ export const LinkIcon = styled.span<{ $getNew?: boolean; $state?: boolean }>`
     opacity: ${(p) => (p.$getNew ? '1' : '0')};
     visibility: ${(p) => (p.$getNew ? 'visible' : 'hidden')};
   }
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    margin: 0;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
 `;
 
 export const LinkTxt = styled.span<{ $state?: boolean }>`
+  display: inline-block;
   font-size: 1.2rem;
   padding: 0 10px;
   font-weight: ${(p) => (p.$state ? '700' : '500')};
+
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    display: none;
+  }
+`;
+
+export const OuterWrap = styled.div`
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-grow: 1;
+  max-width: 1050px;
 `;
 
 export const ConWrap = styled.main`
@@ -108,5 +161,35 @@ export const ConWrap = styled.main`
 
 export const RightSideWrap = styled.aside`
   position: relative;
-  width: 350px;
+  & > div {
+    width: 350px;
+    margin: 0 70px 0 0;
+    height: 100%;
+  }
+`;
+
+export const ComposePostBtn = styled.div`
+  width: 90%;
+  a {
+    width: 100%;
+    justify-content: center;
+    color: ${(p) => p.theme.colors?.white};
+    background: ${(p) => p.theme.colors?.pointColor};
+  }
+  svg {
+    display: none;
+    width: 35px;
+    height: 35px;
+    fill: ${(p) => p.theme.colors?.white};
+  }
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    margin: 0;
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+    span {
+      display: none;
+    }
+  }
 `;
