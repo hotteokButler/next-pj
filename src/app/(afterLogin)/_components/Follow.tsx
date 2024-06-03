@@ -1,3 +1,5 @@
+'use client';
+
 import { ProfileImg } from '@/components/style/common/commonStyle';
 import * as S from '@/components/style/follow';
 
@@ -8,6 +10,7 @@ interface IFollower {
 }
 
 export default function Follow({ follower }: { follower: IFollower }) {
+  const onFollow = () =>{};
   return (
     <S.FollowerRecommendLis>
       <div aria-label='profile_info'>
@@ -20,7 +23,7 @@ export default function Follow({ follower }: { follower: IFollower }) {
         </div>
       </div>
 
-      <S.FollowBtn>팔로우</S.FollowBtn>
+      <S.FollowBtn type='button' onClick={onFollow}>팔로우</S.FollowBtn>
     </S.FollowerRecommendLis>
   );
 }
