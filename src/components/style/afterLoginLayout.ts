@@ -38,6 +38,8 @@ export const ConLogo = styled.div`
 export const LeftSideWrap = styled.header`
   position: relative;
   width: 275px;
+  height: 100%;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
