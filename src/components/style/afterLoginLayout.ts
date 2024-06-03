@@ -266,7 +266,7 @@ export const RightSideCon = styled.div`
   padding: 15px;
   border-radius: 8px;
   background: ${(p) => p.theme.colors?.border};
-
+  margin: 10px 0;
   h3 {
     font-weight: 700;
     font-size: 1.2rem;

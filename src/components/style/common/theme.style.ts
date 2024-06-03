@@ -5,6 +5,7 @@ const colors = {
   black: '#232323',
   blue: '#1d9bf0',
   gray: '#cfd9de',
+  lightgray: '#e1e5e7',
   darkgray: '#9ea5a8',
   border : '#eee',
   pointColor: '#1d9bf0',

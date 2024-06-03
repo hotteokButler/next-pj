@@ -3,6 +3,7 @@
 import * as S from '@/components/style/afterLoginLayout';
 import SearchInput from './SearchInput';
 import TrendSection from './TrendSection';
+import FollowRecommend from './FollowRecommend';
 
 export default function RightAsideCon() {
   return (
@@ -13,6 +14,7 @@ export default function RightAsideCon() {
           <TrendSection/>
 
         {/* 팔로우추천 ========== */}
+        <FollowRecommend/>
       </div>
     </S.RightSideWrap>
   );

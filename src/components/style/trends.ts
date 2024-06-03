@@ -12,13 +12,13 @@ export const TrendLi = styled.div`
 
 export const TrendSub = styled.span`
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: ${p => p.theme.colors?.darkgray};
 `;
 
 export const TrendTit = styled.h5`
   font-weight: 700;
-  margin : 2px 0 4px;
+  margin : 5px 0 4px;
 `
 
 export const TrendPostCnt = styled(TrendSub)`
