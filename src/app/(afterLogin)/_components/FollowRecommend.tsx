@@ -1,4 +1,4 @@
-import { RightSideCon } from "@/components/style/afterLoginLayout";
+import { RightSideCon } from "@/components/style/afterLoginLayout.styled";
 import Follow from './Follow';
 
 export default function FollowRecommend() {

@@ -1,4 +1,4 @@
-import * as S from '@/components/style/searchCon';
+import * as S from '@/components/style/searchCon.styled';
 import { GoSearch } from 'react-icons/go';
 
 export default function SearchInput() {

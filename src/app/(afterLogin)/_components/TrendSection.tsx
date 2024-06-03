@@ -1,4 +1,4 @@
-import { RightSideCon } from '@/components/style/afterLoginLayout';
+import { RightSideCon } from '@/components/style/afterLoginLayout.styled';
 import Trend from './Trend';
 
 export default function TrendSection() {

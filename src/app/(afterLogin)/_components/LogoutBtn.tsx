@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import * as S from '@/components/style/afterLoginLayout';
+import * as S from '@/components/style/afterLoginLayout.styled';
 import { ProfileImg } from '@/components/style/common/commonStyle';
 import { BiSolidLock  ,BiSolidLockOpen} from "react-icons/bi";
 

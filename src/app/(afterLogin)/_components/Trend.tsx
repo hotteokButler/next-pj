@@ -1,4 +1,4 @@
-import * as S from '@/components/style/trends';
+import * as S from '@/components/style/trends.styled';
 import Link from 'next/link';
 
 interface ITrend {

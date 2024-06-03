@@ -3,7 +3,7 @@ main page
 url : '/'
 */
 'use client';
-import * as S from '@/components/style/main';
+import * as S from '@/components/style/main.styled';
 import Link from 'next/link';
 import { BsTwitterX } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';

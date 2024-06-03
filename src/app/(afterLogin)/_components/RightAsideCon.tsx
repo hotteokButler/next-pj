@@ -1,6 +1,6 @@
 'use client';
 
-import * as S from '@/components/style/afterLoginLayout';
+import * as S from '@/components/style/afterLoginLayout.styled';
 import SearchInput from './SearchInput';
 import TrendSection from './TrendSection';
 import FollowRecommend from './FollowRecommend';

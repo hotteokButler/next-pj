@@ -1,5 +1,5 @@
 'use client';
-import * as S from '@/components/style/modal';
+import * as S from '@/components/style/modal.styled';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { BsTwitterX } from 'react-icons/bs';

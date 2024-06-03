@@ -1,6 +1,6 @@
 'use client';
 
-import * as S from '@/components/style/afterLoginLayout';
+import * as S from '@/components/style/afterLoginLayout.styled';
 import { BsTwitterX } from 'react-icons/bs';
 import { GoHome, GoSearch } from 'react-icons/go';
 import { IoMailOutline, IoPersonOutline } from 'react-icons/io5';

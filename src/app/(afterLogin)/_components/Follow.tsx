@@ -1,7 +1,7 @@
 'use client';
 
 import { ProfileImg } from '@/components/style/common/commonStyle';
-import * as S from '@/components/style/follow';
+import * as S from '@/components/style/follow.styled';
 import Link from 'next/link';
 
 interface IFollower {
