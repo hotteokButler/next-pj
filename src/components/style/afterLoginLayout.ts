@@ -53,7 +53,7 @@ export const LeftSideWrap = styled.header`
     justify-content: space-between;
     align-items: stretch;
   }
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
     width: 75px;
     & > div[aria-label='side_main_menu'] {
       width: 75px;
@@ -81,7 +81,7 @@ export const TabMenu = styled.nav`
     }
   }
 
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
     a {
       padding: 10px;
       border-radius: 50%;
@@ -122,7 +122,7 @@ export const LinkIcon = styled.span<{ $getNew?: boolean; $state?: boolean }>`
     opacity: ${(p) => (p.$getNew ? '1' : '0')};
     visibility: ${(p) => (p.$getNew ? 'visible' : 'hidden')};
   }
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
     margin: 0;
 
     svg {
@@ -138,7 +138,7 @@ export const LinkTxt = styled.span<{ $state?: boolean }>`
   padding: 0 10px;
   font-weight: ${(p) => (p.$state ? '700' : '500')};
 
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
     display: none;
   }
 `;
@@ -161,7 +161,7 @@ export const ComposePostBtn = styled.div`
     height: 35px;
     fill: ${(p) => p.theme.colors?.white};
   }
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
     margin: 0 auto;
     svg {
       display: block;
@@ -186,7 +186,7 @@ export const LogoutBtn = styled.button`
     background: ${(p) => p.theme.colors?.border};
   }
 
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
     padding: 0;
     margin: 0 auto 15px;
     justify-content: center;
@@ -209,7 +209,7 @@ export const LogoutBtnTxt = styled.span<{ $isId: boolean }>`
     vertical-align: text-top;
   }
 
-  @media ${({ theme }) => theme.mediaSize?.desktop} {
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
   }
 `;
 
@@ -232,9 +232,22 @@ export const ConWrap = styled.main`
 
 export const RightSideWrap = styled.aside`
   position: relative;
-  & > div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  & > div[aria-label='aside_content'] {
     width: 350px;
-    margin: 0 70px 0 0;
+    margin: 60px 70px 0 0;
+    padding: 10px;
     height: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
+  @media ${({ theme }) => theme.mediaSize?.tablet} {
+
+  }
+
 `;
