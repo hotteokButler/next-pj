@@ -28,6 +28,10 @@ export const FolloerTxt = styled.span<{ $isId: boolean }>`
     vertical-align: text-top;
   }
 
+  &:hover {
+    text-decoration: ${(p) => (p.$isId ? 'none' : 'underline')};
+    text-decoration-thickness: 2px;
+  }
   @media ${({ theme }) => theme.mediaSize?.desktop} {
   }
 `;
@@ -41,6 +45,6 @@ export const FollowBtn = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: ${p => p.theme.colors?.lightgray};
+    background-color: ${(p) => p.theme.colors?.lightgray};
   }
 `;

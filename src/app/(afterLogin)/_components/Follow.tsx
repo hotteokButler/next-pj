@@ -2,6 +2,7 @@
 
 import { ProfileImg } from '@/components/style/common/commonStyle';
 import * as S from '@/components/style/follow';
+import Link from 'next/link';
 
 interface IFollower {
   id: string;
@@ -10,20 +11,24 @@ interface IFollower {
 }
 
 export default function Follow({ follower }: { follower: IFollower }) {
-  const onFollow = () =>{};
+  const onFollow = () => {};
   return (
     <S.FollowerRecommendLis>
       <div aria-label='profile_info'>
         <ProfileImg>
           <img src={follower.image} alt={follower.nickname} />
         </ProfileImg>
-        <div aria-label="profile_txt">
-          <S.FolloerTxt $isId={false}>{follower.nickname}</S.FolloerTxt>
+        <div aria-label='profile_txt'>
+          <Link href={`/${follower.id}`}>
+            <S.FolloerTxt $isId={false}>{follower.nickname}</S.FolloerTxt>
+          </Link>
           <S.FolloerTxt $isId={true}>&#64;{follower.id}</S.FolloerTxt>
         </div>
       </div>
 
-      <S.FollowBtn type='button' onClick={onFollow}>팔로우</S.FollowBtn>
+      <S.FollowBtn type='button' onClick={onFollow}>
+        팔로우
+      </S.FollowBtn>
     </S.FollowerRecommendLis>
   );
 }
