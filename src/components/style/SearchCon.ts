@@ -4,6 +4,13 @@ export const SearchInputWrap = styled.div`
   position: fixed;
   top: 0;
   width: 350px;
+
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    width: 290px;
+  }
+  @media ${({ theme }) => theme.mediaSize?.lgTablet} {
+    display: none;
+  }
 `;
 export const SearchInputForm = styled.form`
   position: relative;

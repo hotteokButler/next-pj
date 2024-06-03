@@ -43,7 +43,7 @@ export const LeftSideWrap = styled.header`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-
+  margin-left: 70px;
   & > div[aria-label='side_main_menu'] {
     position: fixed;
     width: 275px;
@@ -55,8 +55,9 @@ export const LeftSideWrap = styled.header`
     justify-content: space-between;
     align-items: stretch;
   }
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
     width: 75px;
+    margin: 0px;
     & > div[aria-label='side_main_menu'] {
       width: 75px;
     }
@@ -83,7 +84,7 @@ export const TabMenu = styled.nav`
     }
   }
 
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
     a {
       padding: 10px;
       border-radius: 50%;
@@ -124,7 +125,7 @@ export const LinkIcon = styled.span<{ $getNew?: boolean; $state?: boolean }>`
     opacity: ${(p) => (p.$getNew ? '1' : '0')};
     visibility: ${(p) => (p.$getNew ? 'visible' : 'hidden')};
   }
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
     margin: 0;
 
     svg {
@@ -140,7 +141,7 @@ export const LinkTxt = styled.span<{ $state?: boolean }>`
   padding: 0 10px;
   font-weight: ${(p) => (p.$state ? '700' : '500')};
 
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
     display: none;
   }
 `;
@@ -163,7 +164,7 @@ export const ComposePostBtn = styled.div`
     height: 35px;
     fill: ${(p) => p.theme.colors?.white};
   }
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
     margin: 0 auto;
     svg {
       display: block;
@@ -188,7 +189,7 @@ export const LogoutBtn = styled.button`
     background: ${(p) => p.theme.colors?.border};
   }
 
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
     padding: 0;
     margin: 0 auto 15px;
     justify-content: center;
@@ -211,7 +212,7 @@ export const LogoutBtnTxt = styled.span<{ $isId: boolean }>`
     vertical-align: text-top;
   }
 
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
   }
 `;
 
@@ -232,6 +233,9 @@ export const ConWrap = styled.main`
   border-right: 1px solid ${(p) => p.theme.colors?.border};
 `;
 
+/*
+ * right
+ */
 export const RightSideWrap = styled.aside`
   position: relative;
   display: flex;
@@ -241,15 +245,31 @@ export const RightSideWrap = styled.aside`
   & > div[aria-label='aside_content'] {
     width: 350px;
     margin: 60px 70px 0 0;
-    padding: 10px;
     height: 100%;
     top: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
   }
-  @media ${({ theme }) => theme.mediaSize?.tablet} {
 
+  @media ${({ theme }) => theme.mediaSize?.desktop} {
+    & > div[aria-label='aside_content'] {
+      width: 290px;
+    }
   }
+  @media ${({ theme }) => theme.mediaSize?.lgTablet} {
+    display: none;
+  }
+`;
 
+export const RightSideCon = styled.div`
+  padding: 15px;
+  border-radius: 8px;
+  background: ${(p) => p.theme.colors?.border};
+
+  h3 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 0 20px;
+  }
 `;

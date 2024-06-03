@@ -14,13 +14,15 @@ const colors = {
 const deviceSizes = {
   mobile: '420px',
   tablet: '768px',
+  lgtablet: '985px',
   laptop: '1024px',
-  desktop: '1450px',
+  desktop: '1230px',
 };
 
 const device = {
   mobile: `all and (max-width: ${deviceSizes.mobile})`,
   tablet: `all and (max-width: ${deviceSizes.tablet})`,
+  lgTablet: `all and (max-width: ${deviceSizes.lgtablet})`,
   laptop: `all and (max-width: ${deviceSizes.laptop})`,
   desktop: `all and (max-width: ${deviceSizes.desktop})`,
 };
