@@ -41,10 +41,11 @@ export const FollowBtn = styled.button`
   padding: 10px 15px;
   border-radius: 10rem;
   font-weight: 700;
-  background: ${(p) => p.theme.colors?.white};
+  background: ${(p) => p.theme.colors?.black};
+  color: ${p => p.theme.colors?.white};
   cursor: pointer;
 
   &:hover {
-    background-color: ${(p) => p.theme.colors?.lightgray};
+    background-color: ${(p) => p.theme.colors?.gray};
   }
 `;
