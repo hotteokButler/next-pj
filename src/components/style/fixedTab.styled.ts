@@ -5,7 +5,10 @@ export const FixedTabWrap = styled.div`
   top: 0;
   width: calc(100% - 2px);
   max-width: 598px;
-  border-bottom: 1px solid ${p => p.theme.colors?.border};
+  border-bottom: 1px solid ${(p) => p.theme.colors?.border};
+  background-color: #ffffffa6;
+  backdrop-filter: blur(5px);
+
   h4 {
     padding: 10px;
     font-size: 1.2rem;
