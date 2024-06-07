@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
 export const FixedTabWrap = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: calc(100% - 2px);
-  max-width: 598px;
   border-bottom: 1px solid ${(p) => p.theme.colors?.border};
   background-color: #ffffffa6;
   backdrop-filter: blur(5px);
-
+  z-index: 3;
   h4 {
     padding: 10px;
     font-size: 1.2rem;
