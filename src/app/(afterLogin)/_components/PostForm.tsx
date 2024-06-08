@@ -23,7 +23,7 @@ export default function PostForm() {
     imgRef.current?.click();
   };
   return (
-    <S.PostCon>
+    <S.PostFormCon>
       <ProfileImg>
         <img src={user.image} alt={user.id} />
       </ProfileImg>
@@ -38,6 +38,6 @@ export default function PostForm() {
           <S.PostSubmitBtn $validate={validate} type="submit" disabled={validate} >게시하기</S.PostSubmitBtn>
         </S.PostIconBox>
       </S.PostFormWrap>
-    </S.PostCon>
+    </S.PostFormCon>
   );
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PostCon = styled.div`
+export const PostFormCon = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -60,6 +60,5 @@ export const PostSubmitBtn = styled.button<{$validate : boolean;}>`
     
     &:hover {
       background : ${ p => p.$validate ? p.theme.colors?.darkBlue : p.theme.colors?.gray};
-
     }
 `
