@@ -31,6 +31,7 @@ export const ProfileImg = styled.div`
     z-index: 1;
     transition: 0.2s;
     background: transparent;
+    pointer-events: none;
   }
 
   &:hover:after {
