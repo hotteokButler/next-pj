@@ -4,7 +4,8 @@ export const SearchInputWrap = styled.div`
   position: fixed;
   top: 0;
   width: 350px;
-
+  z-index: 5;
+  
   @media ${({ theme }) => theme.mediaSize?.desktop} {
     width: 290px;
   }
