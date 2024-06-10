@@ -15,9 +15,11 @@ export default function Follow({ follower }: { follower: IFollower }) {
   return (
     <S.FollowerRecommendLis>
       <div aria-label='profile_info'>
-        <ProfileImg>
-          <img src={follower.image} alt={follower.nickname} />
-        </ProfileImg>
+        <Link href={`/${follower.id}`}>
+          <ProfileImg>
+            <img src={follower.image} alt={follower.nickname} />
+          </ProfileImg>
+        </Link>
         <div aria-label='profile_txt'>
           <Link href={`/${follower.id}`}>
             <S.FolloerTxt $isId={false}>{follower.nickname}</S.FolloerTxt>

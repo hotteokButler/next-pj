@@ -2,7 +2,6 @@ import { ProfileImg } from '@/components/style/common/commonStyle';
 import * as S from '@/components/style/post.style';
 import Link from 'next/link';
 import React from 'react';
-import User from '../[username]/page';
 
 export default function Post() {
   const data = {
