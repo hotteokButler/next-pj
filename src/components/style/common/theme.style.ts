@@ -4,12 +4,17 @@ const colors = {
   white: '#fff',
   black: '#232323',
   blue: '#1d9bf0',
+  blueOp02: '#1d9bf030',
   gray: '#cfd9de',
+  green :'#46d57b',
+  greenOp02 :'#46d57b2b',
+  pink :'#eb6790',
+  pinkOp02 :'#eb679030',
   lightgray: '#e1e5e7',
   darkgray: '#9ea5a8',
   border : '#eee',
   pointColor: '#1d9bf0',
-  darkBlue :'#0b80cf'
+  darkBlue :'#0b80cf',
 };
 
 const deviceSizes = {

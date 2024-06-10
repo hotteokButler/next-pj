@@ -72,6 +72,7 @@ export const PostConentWrap = styled.article`
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
+  border-bottom: 1px solid ${(p) => p.theme.colors?.border};
 `;
 
 export const PostConentCon = styled.div`
@@ -79,12 +80,117 @@ export const PostConentCon = styled.div`
   flex-direction: column;
   align-items: stretch;
   width: calc(100% - 55px);
-  margin : 0 0 0 10px;
-`
-// Post 내용 E N D ==============
+  margin: 0 0 0 10px;
+`;
 
 export const PostMeta = styled.div`
   a {
     display: block;
   }
-`
+  span {
+    display: inline-block;
+    font-size: 0.95rem;
+  }
+
+  span[aria-label='user_nickname'] {
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+    }
+  }
+  span[aria-label='user_id'] {
+    color: ${(p) => p.theme.colors?.darkgray};
+  }
+  span[aria-label='post_data'] {
+    font-size: 0.9rem;
+    color: ${(p) => p.theme.colors?.darkgray};
+  }
+`;
+
+export const PostContents = styled.div`
+  p[aria-label='content_text'] {
+    margin: 10px 0;
+  }
+`;
+
+export const PostImages = styled.li`
+  img {
+    max-height: 500px;
+    border-radius: 18px;
+    border: 1px solid ${(p) => p.theme.colors?.border};
+  }
+`;
+
+// Post 내용 E N D ==============
+
+// Post action 버튼 START ==============
+export const PostActionBtnWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0 0;
+
+  span {
+    display: inline-block;
+    line-height: 38px;
+    vertical-align: bottom;
+    font-size: 0.8rem;
+    margin-left: -4px;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+
+  button {
+    display: inline-block;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    transition: 0.2s;
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: 0.2s;
+      vertical-align: text-bottom;
+    }
+  }
+
+  button[data-fill='blue'] {
+    &:hover {
+      background: ${(p) => p.theme.colors?.blueOp02};
+      svg {
+        fill: ${(p) => p.theme.colors?.pointColor};
+      }
+      & + span {
+        color: ${(p) => p.theme.colors?.pointColor};
+      }
+    }
+  }
+  button[data-fill='green'] {
+    &:hover {
+      background: ${(p) => p.theme.colors?.greenOp02};
+      svg {
+        fill: ${(p) => p.theme.colors?.green};
+      }
+      & + span {
+        color: ${(p) => p.theme.colors?.green};
+      }
+    }
+  }
+  button[data-fill='pink'] {
+    &:hover {
+      background: ${(p) => p.theme.colors?.pinkOp02};
+      svg {
+        fill: ${(p) => p.theme.colors?.pink};
+      }
+      & + span {
+        color: ${(p) => p.theme.colors?.pink};
+      }
+    }
+  }
+`;
+
+// Post action 버튼 E N D ==============
