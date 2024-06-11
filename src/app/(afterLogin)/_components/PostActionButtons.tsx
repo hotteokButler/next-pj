@@ -5,29 +5,40 @@ import React from 'react';
 import { FaRegHeart, FaRetweet, FaRegComment, FaArrowUpFromBracket } from 'react-icons/fa6';
 
 export default function PostActionButtons() {
+  const commented = false;
+  const reposted = false;
+  const liked = true;
+
+  const onClickComment = () => {};
+  const onClickRepost = () => {};
+  const onClickLike = () => {};
+  const onClickShare = () => {};
+
   return (
     <S.PostActionBtnWrap>
-      <div>
-        <button type='button' data-fill='blue'>
+      <div data-fill='blue'>
+        <button type='button' onClick={onClickComment} className={commented ? 'active':''}>
           <FaRegComment />
         </button>
-        <span></span>
+        <span>3</span>
       </div>
-      <div>
-        <button type='button' data-fill='green'>
+      <div data-fill='green' >
+        <button type='button' onClick={onClickRepost} className={reposted ? 'active':''}>
           <FaRetweet />
         </button>
-        <span></span>
+        <span>4</span>
       </div>
-      <div>
-        <button type='button' data-fill='pink'>
+      <div data-fill='pink' >
+        <button type='button' onClick={onClickLike} className={liked ? 'active':''}>
           <FaRegHeart />
         </button>
-        <span></span>
+        <span>10</span>
       </div>
-      <button type='button' data-fill='blue'>
-        <FaArrowUpFromBracket />
-      </button>
+      <div data-fill='blue'>
+        <button type='button' onClick={onClickShare}>
+          <FaArrowUpFromBracket />
+        </button>
+      </div>
     </S.PostActionBtnWrap>
   );
 }

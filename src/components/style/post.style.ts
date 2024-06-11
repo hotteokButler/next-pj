@@ -59,7 +59,7 @@ export const PostSubmitBtn = styled.button<{ $validate: boolean }>`
   cursor: ${(p) => (p.$validate ? 'pointer' : 'unset')};
   color: ${(p) => p.theme.colors?.white};
   background: ${(p) => (p.$validate ? p.theme.colors?.pointColor : p.theme.colors?.gray)};
-  
+
   &:hover {
     background: ${(p) => (p.$validate ? p.theme.colors?.darkBlue : p.theme.colors?.gray)};
   }
@@ -73,6 +73,11 @@ export const PostConentWrap = styled.article`
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid ${(p) => p.theme.colors?.border};
+
+  &:hover {
+    background-color: ${(p) => p.theme.colors?.grayOp3};
+    cursor: pointer;
+  }
 `;
 
 export const PostConentCon = styled.div`
@@ -158,8 +163,8 @@ export const PostActionBtnWrap = styled.div`
     }
   }
 
-  button[data-fill='blue'] {
-    &:hover {
+  div[data-fill='blue'] {
+    &:hover button {
       background: ${(p) => p.theme.colors?.blueOp02};
       svg {
         fill: ${(p) => p.theme.colors?.pointColor};
@@ -168,9 +173,18 @@ export const PostActionBtnWrap = styled.div`
         color: ${(p) => p.theme.colors?.pointColor};
       }
     }
+    button.active {
+      svg {
+        fill: ${(p) => p.theme.colors?.pointColor};
+      }
+      & + span {
+        color: ${(p) => p.theme.colors?.pointColor};
+      }
+    }
   }
-  button[data-fill='green'] {
-    &:hover {
+
+  div[data-fill='green'] {
+    &:hover button {
       background: ${(p) => p.theme.colors?.greenOp02};
       svg {
         fill: ${(p) => p.theme.colors?.green};
@@ -179,10 +193,27 @@ export const PostActionBtnWrap = styled.div`
         color: ${(p) => p.theme.colors?.green};
       }
     }
+
+    button.active {
+      svg {
+        fill: ${(p) => p.theme.colors?.green};
+      }
+      & + span {
+        color: ${(p) => p.theme.colors?.green};
+      }
+    }
   }
-  button[data-fill='pink'] {
-    &:hover {
+  div[data-fill='pink'] {
+    &:hover button {
       background: ${(p) => p.theme.colors?.pinkOp02};
+      svg {
+        fill: ${(p) => p.theme.colors?.pink};
+      }
+      & + span {
+        color: ${(p) => p.theme.colors?.pink};
+      }
+    }
+    button.active {
       svg {
         fill: ${(p) => p.theme.colors?.pink};
       }
