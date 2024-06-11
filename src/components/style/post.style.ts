@@ -56,10 +56,10 @@ export const PostSubmitBtn = styled.button<{ $validate: boolean }>`
   font-size: 1rem;
   font-weight: 600;
   vertical-align: bottom;
-  cursor: pointer;
+  cursor: ${(p) => (p.$validate ? 'pointer' : 'unset')};
   color: ${(p) => p.theme.colors?.white};
   background: ${(p) => (p.$validate ? p.theme.colors?.pointColor : p.theme.colors?.gray)};
-
+  
   &:hover {
     background: ${(p) => (p.$validate ? p.theme.colors?.darkBlue : p.theme.colors?.gray)};
   }

@@ -40,4 +40,8 @@ export const TabBtn = styled.button<{ $tabState: boolean }>`
     height: 3px;
     background: ${(p) => (p.$tabState ? p.theme.colors?.pointColor : 'transparent')};
   }
+
+  &:hover{
+    background: ${p => p.theme.colors?.grayOp3};
+  }
 `;
