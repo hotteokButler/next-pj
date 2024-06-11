@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import Main from '../_components/Main';
+import { useEffect } from 'react';
 
 /*
 기본적으로 server component라서 
@@ -14,10 +15,13 @@ client routing 사용
       => 이럴경우 뒤로가기하면 다시 /login으로 오게되어 다시 /i/flow/login으로 리다이렉트 됨
 -> route.replace의 경우 browser history stack에 등록되지 x
 
+-> rendering 중에는 상태 업데이트 하면 에러남 useEffect로 래핑 후 에러 해결
 */
 export default function Login() {
   const router = useRouter();
-  router.replace('/i/flow/login', { scroll: false });
-  
-  return <Main/>;
+
+  useEffect(() => {
+    router.replace('/i/flow/login', { scroll: false });
+  }, []);
+  return <Main />;
 }
