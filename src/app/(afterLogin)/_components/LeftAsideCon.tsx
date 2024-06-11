@@ -13,7 +13,11 @@ export default function LeftAsideCon() {
   const segment = useSelectedLayoutSegment();
 
   const user = {
-    id: null,
+      // 임시
+      id: 'hotteokButler',
+      nickname: '호떡집사',
+      image: '/hotteokButler.jpg',
+      private : false
   };
 
   return (

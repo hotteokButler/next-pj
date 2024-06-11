@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import LayoutWrapper from './_components/LayoutWrapper';
 import LeftAsideCon from './_components/LeftAsideCon';
 import CenterMainCon from './_components/CenterMainCon';
@@ -6,7 +6,12 @@ import RightAsideCon from './_components/RightAsideCon';
 import MainOuterCon from './_components/MainOuterCon';
 import StyledComponentsRegistry from '@/lib/registry';
 
-export default function AfterLoginlayout({ children }: { children: React.ReactNode }) {
+interface IProps {
+  children: ReactNode;
+  modal: ReactNode;
+}
+
+export default function AfterLoginlayout({ children, modal }: IProps) {
   return (
     <StyledComponentsRegistry>
       <LayoutWrapper>
@@ -18,6 +23,9 @@ export default function AfterLoginlayout({ children }: { children: React.ReactNo
           {/* right aside  ======== */}
           <RightAsideCon />
         </MainOuterCon>
+
+        {/* modal ======== */}
+        {modal}
       </LayoutWrapper>
     </StyledComponentsRegistry>
   );
