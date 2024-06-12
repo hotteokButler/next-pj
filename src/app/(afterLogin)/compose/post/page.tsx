@@ -1,5 +1,5 @@
-import Home from "../../home/page";
+import ComposePostModal from "@/app/(afterLogin)/_components/ComposePostModal";
 
 export default function Post() {
-  return <Home/>;
+  return <ComposePostModal/>;
 }

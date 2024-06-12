@@ -4,7 +4,7 @@ export const ModalWrap = styled.div`
   width: 100dvw;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.35);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -12,6 +12,7 @@ export const ModalWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9;
 `;
 
 export const ModalCon = styled.div`
@@ -110,5 +111,80 @@ export const ModalSubmitBtn = styled.button<{ $varified: boolean }>`
   cursor: pointer;
   &:hover {
     opacity: 0.7;
+  }
+`;
+
+
+// post modal
+
+export const PostModalCon = styled.div`
+  position: relative;
+  width: 80dvw;
+  max-width: 600px;
+  padding: 10px;
+  border-radius: 1rem;
+  background: ${(props) => props.theme.colors?.white};
+`;
+
+
+export const PostFormCon = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px 15px 0px;
+`;
+
+export const PostFormWrap = styled.form`
+  width: calc(100% - 55px);
+  margin: 0 0 0 10px;
+
+  textarea {
+    border: none;
+    width: 100%;
+    height: 100px;
+    resize: none;
+  }
+  hr {
+    background: ${(p) => p.theme.colors?.border};
+    height: 1px;
+    border: 0;
+  }
+`;
+
+export const PostIconBox = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 0;
+  span {
+    display: inline-block;
+    cursor: pointer;
+  }
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    path {
+      fill: ${(p) => p.theme.colors?.pointColor};
+    }
+  }
+
+  svg:hover {
+    opacity: 0.8;
+  }
+`;
+
+export const PostSubmitBtn = styled.button<{ $validate: boolean }>`
+  margin: 0 0 0 auto;
+  background: #eee;
+  border-radius: 10rem;
+  padding: 12px 20px 9px;
+  font-size: 1rem;
+  font-weight: 600;
+  vertical-align: bottom;
+  cursor: ${(p) => (p.$validate ? 'pointer' : 'unset')};
+  color: ${(p) => p.theme.colors?.white};
+  background: ${(p) => (p.$validate ? p.theme.colors?.pointColor : p.theme.colors?.gray)};
+
+  &:hover {
+    background: ${(p) => (p.$validate ? p.theme.colors?.darkBlue : p.theme.colors?.gray)};
   }
 `;

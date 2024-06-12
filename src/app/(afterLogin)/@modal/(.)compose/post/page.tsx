@@ -1,7 +1,6 @@
-import React from 'react'
+import ComposePostModal from "@/app/(afterLogin)/_components/ComposePostModal";
 
-export default function ComposePostModal() {
-  return (
-    <div>ddddd</div>
-  )
+export default function ComposePost() {
+  return <ComposePostModal/>;
+
 }
