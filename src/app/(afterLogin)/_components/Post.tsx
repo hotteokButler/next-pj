@@ -3,25 +3,63 @@ import * as S from '@/components/style/post.style';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
-import React from 'react';
+import {useEffect, useState} from 'react';
 import 'dayjs/locale/ko';
 import PostActionButtons from './PostActionButtons';
+import { faker } from '@faker-js/faker';
 
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
-export default function Post() {
-  const data = {
-    User: {
-      id: 'hotteokButler',
-      nickname: '호떡집사',
-      image: '/hotteokButler.jpg',
-    },
-    content: '테스트 게시글 입니다',
-    createdAt: new Date(),
-    Images: ['/test_.jpeg'],
-  };
+
+type IData = {
+  postId : number | string,
+  User : {
+    id : string,
+    nickname : string,
+    image : string,
+  },
+  content : string | undefined,
+  createdAt : number | string | Date,
+  Images : any[],
+} | undefined;
+
+interface IProp {
+  noImage ?: boolean;
+}
+export default function Post({noImage} : IProp) {
+
+  const [data,setData] = useState<IData>(undefined);
+  const [imgCnt ,setImgCnt] = useState(1);
+
+  useEffect(()=> {
+    const randomNum = Math.floor(Math.random() * 10 + 1);
+    const getImageCnt = randomNum > 5 ? 4 : randomNum;
+    const user = faker.internet.userName();
+    const newData : IData = {
+      postId: faker.string.uuid(),
+      User: {
+        id: user,
+        nickname: user,
+        image: '/hotteokButler.jpg',
+      },
+      content: '테스트 게시글 입니다',
+      createdAt: faker.date.anytime(),
+      Images: [],
+    }
+  
+    if(Math.random() > 0.5 && !noImage) {
+      for (let i = 0; i <getImageCnt; i++) {
+        newData.Images.push({imageId : i, link: faker.image.urlLoremFlickr()});
+      }
+    }
+
+    setData(()=> newData);
+    setImgCnt (() => Number(getImageCnt));
+  },[]);
+  
+  if (!data) return;
 
   return (
     <S.PostConentWrap>
@@ -47,10 +85,10 @@ export default function Post() {
         <S.PostContents>
             <p aria-label='content_text'>{data.content}</p>
             {
-              data.Images &&
-              <ul aria-label='content_images'>
-                {data.Images.map((images,idx) => <S.PostImages key={idx}><img src={images}/></S.PostImages>)}
-              </ul>
+              data.Images.length > 0 &&
+              <S.PostImagesUl $imgCnt={imgCnt}>
+                {data.Images.map((images,idx) => <S.PostImages key={idx}><img src={images.link}/></S.PostImages>)}
+              </S.PostImagesUl>
             }
         </S.PostContents>
         {/* post action 버튼 */}

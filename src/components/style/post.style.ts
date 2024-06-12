@@ -120,12 +120,20 @@ export const PostContents = styled.div`
   }
 `;
 
+export const PostImagesUl = styled.ul<{ $imgCnt : number;}>`
+  display: grid;
+  border-radius: 18px;
+  gap: 1px;
+  overflow: hidden;
+  grid-template-columns: ${p => p.$imgCnt < 2 ? 'repeat(1,1fr)'  : 'repeat(2,1fr)'};
+  border: 1px solid ${(p) => p.theme.colors?.border};
+`
 export const PostImages = styled.li`
-  img {
-    max-height: 500px;
-    border-radius: 18px;
-    border: 1px solid ${(p) => p.theme.colors?.border};
-  }
+ img {
+  object-fit: cover;
+    height: 100%;
+    width: auto;
+ }
 `;
 
 // Post 내용 E N D ==============
