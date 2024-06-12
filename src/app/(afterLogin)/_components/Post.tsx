@@ -35,7 +35,7 @@ export default function Post({noImage} : IProp) {
 
   useEffect(()=> {
     const randomNum = Math.floor(Math.random() * 10 + 1);
-    const getImageCnt = randomNum > 5 ? 4 : randomNum;
+    const getImageCnt = randomNum > 4 ? 4 : randomNum;
     const user = faker.internet.userName();
     const newData : IData = {
       postId: faker.string.uuid(),
