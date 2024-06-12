@@ -19,6 +19,7 @@
     "styled-reset": "^4.5.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@swc/plugin-styled-components": "^2.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
