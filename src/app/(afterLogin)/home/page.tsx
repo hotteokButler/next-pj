@@ -16,6 +16,15 @@ export default function Home() {
         <Post/>
         <Post/>
         <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
       </S.HomeCon>
     </HomeFixedTabProvider>
   );
