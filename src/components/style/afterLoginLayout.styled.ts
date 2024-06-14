@@ -236,7 +236,7 @@ export const ConWrap = styled.main`
 /*
  * right
  */
-export const RightSideWrap = styled.aside`
+export const RightSideWrap = styled.aside<{$noGap : boolean}>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -244,9 +244,8 @@ export const RightSideWrap = styled.aside`
 
   & > div[aria-label='aside_content'] {
     width: 350px;
-    margin: 60px 70px 0 0;
+    margin: ${p => p.$noGap ? '0 70px 0 0' :'60px 70px 0 0'};
     height: 100%;
-    top: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -262,11 +261,17 @@ export const RightSideWrap = styled.aside`
   }
 `;
 
-export const RightSideCon = styled.div`
+export const RightSideCon = styled.div<{$isExplore : boolean ; $bg_white : boolean}>`
   padding: 15px;
-  border-radius: 8px;
-  background: ${(p) => p.theme.colors?.border};
-  margin: 10px 0;
+  border-radius: ${(p) => p.$isExplore ? '0px':'8px'};
+  border : 1px solid ${p=>p.theme.colors?.border};  
+
+  margin: ${p => p.$isExplore ? '0' :'10px 0'};
+  ${p=> 
+  p.$isExplore && 
+  `
+  border: none;
+  `}
   h3 {
     font-weight: 700;
     font-size: 1.2rem;
