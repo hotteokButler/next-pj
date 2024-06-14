@@ -33,7 +33,8 @@ export const GlobalStyle = createGlobalStyle`
 
   button,input,select {
     outline: none;
-    border:  none;
+    border: none;
     background-color: transparent;
+    cursor: pointer;
   }
 `;

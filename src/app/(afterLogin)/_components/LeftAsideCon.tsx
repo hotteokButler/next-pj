@@ -40,10 +40,10 @@ export default function LeftAsideCon() {
               <S.LinkTxt $state={segment === 'home'}>홈</S.LinkTxt>
             </Link>
             <Link href='/explore'>
-              <S.LinkIcon $state={segment === 'explore'} $getNew={false}>
+              <S.LinkIcon $state={segment === 'explore' || segment === 'search'} $getNew={false}>
                 <GoSearch />
               </S.LinkIcon>
-              <S.LinkTxt $state={segment === 'explore'}>탐색하기</S.LinkTxt>
+              <S.LinkTxt $state={segment === 'explore' || segment === 'search'}>탐색하기</S.LinkTxt>
             </Link>
             <Link href='/messages'>
               <S.LinkIcon $state={segment === 'messages'} $getNew={false}>

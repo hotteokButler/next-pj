@@ -10,8 +10,8 @@ export default function RightAsideCon() {
   const segment = useSelectedLayoutSegment();
 
   return (
-    <S.RightSideWrap $noGap={segment === 'explore'}>
-      {segment !== 'explore' &&  <SearchInput isFixed={true}/>}
+    <S.RightSideWrap $noGap={['explore','search'].includes(String(segment))}>
+      {['explore','search'].includes(String(segment)) || <SearchInput isFixed={true}/>}
 
       <div aria-label='aside_content'>
         {/* 나를 위한 트렌드 ========== */}

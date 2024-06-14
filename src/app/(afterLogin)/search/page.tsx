@@ -1,4 +1,12 @@
+import ExploreMainCon from '../_components/ExploreMainCon';
+import SearchInput from '../_components/SearchInput';
 
 export default function Search() {
-  return <h2>Search</h2>;
+  return (
+    <ExploreMainCon>
+      <SearchInput isFixed={false} />
+
+
+    </ExploreMainCon>
+  );
 }

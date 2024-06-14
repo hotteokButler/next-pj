@@ -1,15 +1,29 @@
-"use client";
+'use client';
 
 import * as S from '@/components/style/searchCon.styled';
-import { GoSearch } from 'react-icons/go';
-
+import { GoSearch, GoArrowLeft } from 'react-icons/go';
+import { usePathname ,useRouter} from 'next/navigation';
 interface IProps {
-  isFixed : boolean;
+  isFixed: boolean;
 }
 
-export default function SearchInput({isFixed } : IProps ) {
+export default function SearchInput({ isFixed }: IProps) {
+  const pathname = usePathname();
+  const fPathname = pathname.replace('/', '');
+  const router = useRouter();
+
+  const onClickBackBtn = ()  => {
+    router.back();
+  }
+
   return (
     <S.SearchInputWrap $fixed={isFixed}>
+      {['explore', 'search'].includes(String(fPathname)) && (
+        <S.SearchBackBtn onClick={onClickBackBtn}>
+          <GoArrowLeft />
+        </S.SearchBackBtn>
+      )}
+
       <S.SearchInputForm name='s_qurey' $fixed={isFixed}>
         <S.SearchInputLabel htmlFor='search_query'>
           <GoSearch />
