@@ -12,9 +12,10 @@ export default function SearchInput({ isFixed }: IProps) {
   const fPathname = pathname.replace('/', '');
   const router = useRouter();
 
-  const onClickBackBtn = ()  => {
+  const onClickBackBtn = (e: React.MouseEvent) => {
+    e.preventDefault();
     router.back();
-  }
+  };
 
   return (
     <S.SearchInputWrap $fixed={isFixed}>
