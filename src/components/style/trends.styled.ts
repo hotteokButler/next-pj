@@ -2,11 +2,15 @@ import styled from 'styled-components';
 
 export const TrendLi = styled.div`
   width: 100%;
-  padding: 15px 0px; 
   a {
+    padding: 15px;
     display: flex;
     width: 100%;
     flex-direction: column;
+    transition: 0.2s;
+    &:hover {
+      background : ${p => p.theme.colors?.border};
+    }
   }
 `;
 

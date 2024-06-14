@@ -262,7 +262,6 @@ export const RightSideWrap = styled.aside<{$noGap : boolean}>`
 `;
 
 export const RightSideCon = styled.div<{$isExplore : boolean ; $bg_white : boolean}>`
-  padding: 15px;
   border-radius: ${(p) => p.$isExplore ? '0px':'8px'};
   border : 1px solid ${p=>p.theme.colors?.border};  
 
@@ -273,8 +272,8 @@ export const RightSideCon = styled.div<{$isExplore : boolean ; $bg_white : boole
   border: none;
   `}
   h3 {
+    padding: 15px 15px 20px;
     font-weight: 700;
     font-size: 1.2rem;
-    margin: 0 0 20px;
   }
 `;

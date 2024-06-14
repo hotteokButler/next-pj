@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const FollowerRecommendLis = styled.div`
   width: 100%;
-  padding: 10px 0px;
+  padding: 10px 15px;
   display: flex;
   justify-content: space-between;
-
+  &:hover{
+    background: ${p => p.theme.colors?.border};
+  }
   div[aria-label='profile_info'] {
     display: flex;
   }
