@@ -64,6 +64,7 @@ export const SearchBackBtn = styled.button`
   height: 40px;
   border-radius: 50%;
   transition : 0.2s;
+
   &:hover{
     background: ${p => p.theme.colors?.border};
   }
