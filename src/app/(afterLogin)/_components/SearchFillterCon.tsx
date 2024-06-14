@@ -33,24 +33,24 @@ export default function SearchFillterCon() {
         <S.SearchFillterForm name='search_fillter'>
           <S.SearchFillterLi>
             <h4>사용자</h4>
-            <S.SearchRadio data-id='f_all'>
+            <S.SearchRadio>
               <label htmlFor='f_all'>모든 사용자</label>
-              <input type='radio' name='f_user' onChange={onChangeUser}  id='f_all' />
+              <input type='radio' name='pf' defaultChecked onChange={onChangeUser}  id='f_all' />
             </S.SearchRadio>
             <S.SearchRadio data-id='f_me'>
               <label htmlFor='f_me'>내가 팔로우하는 사람들</label>
-              <input type='radio' name='f_user' onChange={onChangeUser}  id='f_me' />
+              <input type='radio' name='pf' onChange={onChangeUser}  id='f_me' />
             </S.SearchRadio>
           </S.SearchFillterLi>
           <S.SearchFillterLi>
             <h4>위치</h4>
-            <S.SearchRadio data-id='lf_any'>
+            <S.SearchRadio >
               <label htmlFor='lf_any'>어디에서나</label>
-              <input type='radio' name='location' onChange={onChangeLocation}  id='lf_any' />
+              <input type='radio' name='lf' defaultChecked onChange={onChangeLocation}  id='lf_any' />
             </S.SearchRadio>
             <S.SearchRadio data-id='lf_me'>
               <label htmlFor='lf_me'>내가 팔로우하는 사람들</label>
-              <input type='radio' name='location' onChange={onChangeLocation}  id='lf_me' />
+              <input type='radio' name='lf' onChange={onChangeLocation}  id='lf_me' />
             </S.SearchRadio>
           </S.SearchFillterLi>
         </S.SearchFillterForm>
