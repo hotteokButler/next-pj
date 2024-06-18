@@ -10,9 +10,9 @@ interface IProps {
 }
 
 export default function SearchFixedTab({ q }: IProps) {
-  const [tab, setTab] = useState('hot');
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [tab, setTab] = useState(searchParams.get('f') || 'hot');
 
   const handleQuery = useCallback(
     (name: string, value: string, queryRemove: boolean) => {
@@ -25,18 +25,17 @@ export default function SearchFixedTab({ q }: IProps) {
     [searchParams]
   );
 
-
   const onClickHot = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setTab('hot');
-    router.replace(`/search?q=${q}`, { scroll: false });
+    setTab(() => 'hot');
+    return router.replace(`/search?q=${q}`, { scroll: false });
   };
   const onClickLive = (e: React.MouseEvent<HTMLButtonElement>) => {
-    router.replace(`/search?${handleQuery('f', 'live', false)}`, { scroll: false });
-    setTab('live');
+    setTab(() => 'live');
+    return router.replace(`/search?${handleQuery('f', 'live', false)}`, { scroll: false });
   };
   const onClickUser = (e: React.MouseEvent<HTMLButtonElement>) => {
-    router.replace(`/search?${handleQuery('f', 'user', false)}`, { scroll: false });
-    setTab('user');
+    setTab(() => 'user');
+    return router.replace(`/search?${handleQuery('f', 'user', false)}`, { scroll: false });
   };
 
   return (
@@ -46,10 +45,10 @@ export default function SearchFixedTab({ q }: IProps) {
         <S.TabBtn type='button' onClick={onClickHot} $tabState={!Boolean(searchParams.get('f'))}>
           인기
         </S.TabBtn>
-        <S.TabBtn type='button' onClick={onClickLive} $tabState={Boolean(searchParams.get('f')==="live")}>
+        <S.TabBtn type='button' onClick={onClickLive} $tabState={Boolean(searchParams.get('f') === 'live')}>
           실시간
         </S.TabBtn>
-        <S.TabBtn type='button' onClick={onClickUser} $tabState={Boolean(searchParams.get('f')==="user")}>
+        <S.TabBtn type='button' onClick={onClickUser} $tabState={Boolean(searchParams.get('f') === 'user')}>
           사용자
         </S.TabBtn>
       </S.TabBtns>
