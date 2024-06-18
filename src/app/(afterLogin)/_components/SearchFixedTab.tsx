@@ -25,30 +25,31 @@ export default function SearchFixedTab({ q }: IProps) {
     [searchParams]
   );
 
+
   const onClickHot = (e: React.MouseEvent<HTMLButtonElement>) => {
     setTab('hot');
     router.replace(`/search?q=${q}`, { scroll: false });
   };
   const onClickLive = (e: React.MouseEvent<HTMLButtonElement>) => {
+    router.replace(`/search?${handleQuery('f', 'live', false)}`, { scroll: false });
     setTab('live');
-    router.replace(`/search?${handleQuery('f', tab ,false)}`, { scroll: false });
   };
   const onClickUser = (e: React.MouseEvent<HTMLButtonElement>) => {
+    router.replace(`/search?${handleQuery('f', 'user', false)}`, { scroll: false });
     setTab('user');
-    router.replace(`/search?${handleQuery('f', tab,false)}`, { scroll: false });
   };
 
   return (
     <S.FixedTabWrap>
       <SearchInput isFixed={false} />
       <S.TabBtns $tab_cnt={3}>
-        <S.TabBtn type='button' onClick={onClickHot} $tabState={Boolean(tab === 'hot')}>
+        <S.TabBtn type='button' onClick={onClickHot} $tabState={!Boolean(searchParams.get('f'))}>
           인기
         </S.TabBtn>
-        <S.TabBtn type='button' onClick={onClickLive} $tabState={Boolean(tab === 'live')}>
+        <S.TabBtn type='button' onClick={onClickLive} $tabState={Boolean(searchParams.get('f')==="live")}>
           실시간
         </S.TabBtn>
-        <S.TabBtn type='button' onClick={onClickUser} $tabState={Boolean(tab === 'user')}>
+        <S.TabBtn type='button' onClick={onClickUser} $tabState={Boolean(searchParams.get('f')==="user")}>
           사용자
         </S.TabBtn>
       </S.TabBtns>
