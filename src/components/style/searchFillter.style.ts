@@ -30,6 +30,7 @@ export const SearchRadio = styled.div`
       cursor: pointer;
     }
     &:after{
+      pointer-events: none;
       position: absolute;
       content: '✓';
       clear: both;

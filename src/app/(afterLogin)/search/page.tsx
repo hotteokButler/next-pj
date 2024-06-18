@@ -1,12 +1,23 @@
-import ExploreMainCon from '../_components/ExploreMainCon';
-import SearchInput from '../_components/SearchInput';
+'use client';
 
-export default function Search() {
+import ExploreMainCon from '../_components/ExploreMainCon';
+import SearchFixedTab from '../_components/SearchFixedTab';
+
+
+interface IProps {
+  searchParams : {
+    q : string;
+    pf ?: string;
+    lf ?: string;
+  }
+}
+
+
+export default function Search({searchParams} : IProps) {
+  
   return (
     <ExploreMainCon>
-      <SearchInput isFixed={false} />
-
-
+      <SearchFixedTab q={searchParams.q} />
     </ExploreMainCon>
   );
 }

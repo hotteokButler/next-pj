@@ -14,10 +14,14 @@ export const FixedTabWrap = styled.div`
   }
 `;
 
-export const TabBtns = styled.div`
+
+
+
+
+export const TabBtns = styled.div<{$tab_cnt ?: number | string;}>`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(2, 2fr);
+  grid-template-columns: repeat(${p => p.$tab_cnt ? p.$tab_cnt : 2}, 1fr);
 `;
 
 export const TabBtn = styled.button<{ $tabState: boolean }>`

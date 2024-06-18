@@ -270,6 +270,7 @@ export const RightSideCon = styled.div<{$isExplore : boolean ; $bg_white : boole
   p.$isExplore && 
   `
   border: none;
+  border-top: 1px solid ${p.theme.colors?.border}; 
   `}
   h3 {
     padding: 15px 15px 20px;

@@ -12,14 +12,9 @@ export const SearchInputWrap = styled.div<{ $fixed: boolean }>`
     `
       : `
     padding: 10px;
-    position: sticky;
-    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffffa6;
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid #eee;
     `}
 
   @media ${({ theme }) => theme.mediaSize?.desktop} {

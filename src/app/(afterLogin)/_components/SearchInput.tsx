@@ -25,7 +25,7 @@ export default function SearchInput({ isFixed }: IProps) {
 
   const onSubmit : React.FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
-    router.push( `/search?q=${queryRef.current?.value}`, { scroll: false })
+    router.replace( `/search?q=${queryRef.current?.value}`, { scroll: false })
 
   };
   return (
