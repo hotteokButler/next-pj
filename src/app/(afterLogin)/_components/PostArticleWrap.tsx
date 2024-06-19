@@ -2,7 +2,7 @@
 'use client';
 
 import { PostConentWrap } from '@/components/style/post.style';
-import React from 'react'
+import React, { useRef } from 'react'
 import { IData } from './Post';
 import { useRouter } from 'next/navigation';
 
@@ -11,10 +11,11 @@ export default function PostArticleWrap({ children ,data }: { children: React.Re
   const router = useRouter();
 
   const onClick  = (e: React.MouseEvent<HTMLElement> ) => {
+    e.preventDefault();
     router.replace(`/${id}/status/${postId}`);
   }
   return (
-    <PostConentWrap onClickCapture={onClick}>{children}</PostConentWrap>
+    <PostConentWrap onClick={onClick}>{children}</PostConentWrap>
   )
 }
 

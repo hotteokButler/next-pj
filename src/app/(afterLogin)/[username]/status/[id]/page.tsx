@@ -1,3 +1,12 @@
+'use client';
+
+import ExploreMainCon from '@/app/(afterLogin)/_components/ExploreMainCon';
+import Post from '@/app/(afterLogin)/_components/Post';
+
 export default function Status() {
-  return <h1>개별게시글</h1>;
+  return (
+    <ExploreMainCon>
+      <Post />
+    </ExploreMainCon>
+  );
 }

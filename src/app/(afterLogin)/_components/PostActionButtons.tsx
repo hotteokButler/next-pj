@@ -9,33 +9,45 @@ export default function PostActionButtons() {
   const reposted = false;
   const liked = true;
 
-  const onClickComment = () => {};
-  const onClickRepost = () => {};
-  const onClickLike = () => {};
-  const onClickShare = () => {};
+  const onClickComment = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    console.log('comment');
+  };
+  const onClickRepost = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    console.log('repost');
+  };
+  const onClickLike = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    console.log('like');
+  };
+  const onClickShare = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    console.log('share');
+  };
 
   return (
     <S.PostActionBtnWrap>
-      <div data-fill='blue'>
-        <button type='button' onClick={onClickComment} className={commented ? 'active':''}>
+      <div data-fill='blue' onClickCapture={onClickComment}>
+        <button type='button' className={commented ? 'active' : ''}>
           <FaRegComment />
         </button>
         <span>3</span>
       </div>
-      <div data-fill='green' >
-        <button type='button' onClick={onClickRepost} className={reposted ? 'active':''}>
+      <div data-fill='green' onClickCapture={onClickRepost}>
+        <button type='button' className={reposted ? 'active' : ''}>
           <FaRetweet />
         </button>
         <span>4</span>
       </div>
-      <div data-fill='pink' >
-        <button type='button' onClick={onClickLike} className={liked ? 'active':''}>
+      <div data-fill='pink' onClickCapture={onClickLike}>
+        <button type='button' className={liked ? 'active' : ''}>
           <FaRegHeart />
         </button>
         <span>10</span>
       </div>
-      <div data-fill='blue'>
-        <button type='button' onClick={onClickShare}>
+      <div data-fill='blue' onClickCapture={onClickShare}>
+        <button type='button'>
           <FaArrowUpFromBracket />
         </button>
       </div>
