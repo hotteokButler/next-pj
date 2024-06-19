@@ -15,7 +15,7 @@ export default function PostArticleWrap({ children ,data }: { children: React.Re
   const onClick : React.MouseEventHandler<HTMLElement> = (e ) => {
     e.preventDefault();
     const {nodeName} = e.target as HTMLElement
-    if( nodeName === 'ARTICLE' && !(pathnameArr.includes('status'))) router.replace(`/${id}/status/${postId}`);
+    if( nodeName === 'ARTICLE' && !(pathnameArr.includes('status'))) router.push(`/${id}/status/${postId}`);
   }
   return (
     <PostConentWrap onClick={onClick}>{children}</PostConentWrap>
