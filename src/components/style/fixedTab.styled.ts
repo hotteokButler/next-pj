@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { SearchBackBtn } from './searchCon.styled';
 
 export const FixedTabWrap = styled.div`
   position: sticky;
@@ -49,3 +50,12 @@ export const TabBtn = styled.button<{ $tabState: boolean }>`
     background: ${p => p.theme.colors?.grayOp3};
   }
 `;
+
+
+export const FixedTabBackBtn = styled(SearchBackBtn)`
+  margin: 10px;
+`
+
+export const FixedTabH4 = styled.h4`
+  display: inline-block;
+`

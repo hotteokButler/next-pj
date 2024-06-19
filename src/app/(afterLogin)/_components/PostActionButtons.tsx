@@ -3,15 +3,17 @@
 import * as S from '@/components/style/post.style';
 import React from 'react';
 import { FaRegHeart, FaRetweet, FaRegComment, FaArrowUpFromBracket } from 'react-icons/fa6';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function PostActionButtons() {
   const commented = false;
   const reposted = false;
   const liked = true;
+  const router = useRouter();
 
   const onClickComment = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    console.log('comment');
   };
   const onClickRepost = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
@@ -29,10 +31,12 @@ export default function PostActionButtons() {
   return (
     <S.PostActionBtnWrap>
       <div data-fill='blue' onClickCapture={onClickComment}>
-        <button type='button' className={commented ? 'active' : ''}>
-          <FaRegComment />
-        </button>
-        <span>3</span>
+        <Link href='/compose/comment'>
+          <button type='button' className={commented ? 'active' : ''}>
+            <FaRegComment />
+          </button>
+          <span>3</span>
+        </Link>
       </div>
       <div data-fill='green' onClickCapture={onClickRepost}>
         <button type='button' className={reposted ? 'active' : ''}>
