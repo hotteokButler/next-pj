@@ -8,21 +8,22 @@ import 'dayjs/locale/ko';
 import PostActionButtons from './PostActionButtons';
 import { faker } from '@faker-js/faker';
 import PostArticleWrap from './PostArticleWrap';
+import PostImageCon from './PostImageCon';
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
 export type IData = {
-      postId: number | string;
-      User: {
-        id: string;
-        nickname: string;
-        image: string;
-      };
-      content: string | undefined;
-      createdAt: number | string | Date;
-      Images: any[];
-    };
+  postId: number | string;
+  User: {
+    id: string;
+    nickname: string;
+    image: string;
+  };
+  content: string | undefined;
+  createdAt: number | string | Date;
+  Images: [{ imageId: number; link: string }] | any[];
+};
 
 interface IProp {
   noImage?: boolean;
@@ -82,15 +83,7 @@ export default function Post({ noImage }: IProp) {
         {/* 게시글 시작 */}
         <S.PostContents>
           <p aria-label='content_text'>{data.content}</p>
-          {data.Images.length > 0 && (
-            <S.PostImagesUl $imgCnt={imgCnt}>
-              {data.Images.map((images, idx) => (
-                <S.PostImages key={idx}>
-                  <img src={images.link} />
-                </S.PostImages>
-              ))}
-            </S.PostImagesUl>
-          )}
+          {data.Images.length > 0 && <PostImageCon data={data} imgCnt={imgCnt} />}
         </S.PostContents>
         {/* post action 버튼 */}
         <PostActionButtons />
