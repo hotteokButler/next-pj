@@ -16,7 +16,7 @@ export default function PostImageCon({ data, imgCnt }: IProps) {
     <S.PostImagesUl $imgCnt={imgCnt}>
       {data.Images.map((images, idx) => (
         <S.PostImages key={idx}>
-            <Link href={`/${data.User.id}/status/${data.postId}/photo/${images.imageId}`}>
+            <Link href={`/${data.User.id}/status/${data.postId}/photo/${images.imageId}`} scroll={false}>
               <img src={images.link} />
             </Link>
         </S.PostImages>

@@ -52,7 +52,7 @@ export default function ComposePostCommentModal() {
                 <RxImage />
               </span>
               <S.PostSubmitBtn $validate={validate} type='submit' disabled={validate}>
-                게시하기
+                답글
               </S.PostSubmitBtn>
             </S.PostIconBox>
           </S.PostFormWrap>

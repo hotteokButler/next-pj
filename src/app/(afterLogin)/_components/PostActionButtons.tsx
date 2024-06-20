@@ -6,7 +6,12 @@ import { FaRegHeart, FaRetweet, FaRegComment, FaArrowUpFromBracket } from 'react
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function PostActionButtons() {
+
+interface IProps {
+  colorDefSet : boolean;
+}
+
+export default function PostActionButtons({colorDefSet} : IProps) {
   const commented = false;
   const reposted = false;
   const liked = true;
@@ -29,7 +34,7 @@ export default function PostActionButtons() {
   };
 
   return (
-    <S.PostActionBtnWrap>
+    <S.PostActionBtnWrap $color_default={colorDefSet}>
       <div data-fill='blue' onClickCapture={onClickComment}>
         <Link href='/compose/comment'>
           <button type='button' className={commented ? 'active' : ''}>

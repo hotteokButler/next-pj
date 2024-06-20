@@ -50,7 +50,7 @@ export default function Post({ noImage }: IProp) {
 
     if (Math.random() > 0.5 && !noImage) {
       for (let i = 0; i < getImageCnt; i++) {
-        newData.Images.push({ imageId: i, link: faker.image.urlLoremFlickr() });
+        newData.Images.push({ imageId: i, link: faker.image.urlPicsumPhotos() });
       }
     }
 
@@ -86,7 +86,7 @@ export default function Post({ noImage }: IProp) {
           {data.Images.length > 0 && <PostImageCon data={data} imgCnt={imgCnt} />}
         </S.PostContents>
         {/* post action 버튼 */}
-        <PostActionButtons />
+        <PostActionButtons colorDefSet={true} />
       </S.PostConentCon>
     </PostArticleWrap>
   );

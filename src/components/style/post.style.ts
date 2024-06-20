@@ -139,7 +139,7 @@ export const PostImages = styled.li`
 // Post 내용 E N D ==============
 
 // Post action 버튼 START ==============
-export const PostActionBtnWrap = styled.div`
+export const PostActionBtnWrap = styled.div<{$color_default : boolean;}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -154,6 +154,11 @@ export const PostActionBtnWrap = styled.div`
     margin-left: -4px;
     font-weight: 500;
     transition: 0.2s;
+  ${
+    p => p.$color_default ? 
+    `color : #222;` :
+    `color : #fff;`
+  }
   }
 
   button {
@@ -168,6 +173,11 @@ export const PostActionBtnWrap = styled.div`
       height: 20px;
       transition: 0.2s;
       vertical-align: text-bottom;
+      ${
+    p => p.$color_default ? 
+    `fill : #222;` :
+    `fill : #fff;`
+  }
     }
   }
 

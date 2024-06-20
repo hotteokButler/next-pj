@@ -1,5 +1,17 @@
-import Status from "../../page";
+import Status from '../../page';
 
-export default function PhotoPage() {
-  return <Status/>;
+interface IProps {
+  params: {
+    username: string;
+    id: string;
+    photoId: string;
+  };
+}
+
+export default function PhotoPage({ params }: IProps) {
+  return (
+    <>
+      <Status />
+    </>
+  );
 }

@@ -188,3 +188,91 @@ export const PostSubmitBtn = styled.button<{ $validate: boolean }>`
     background: ${(p) => (p.$validate ? p.theme.colors?.darkBlue : p.theme.colors?.gray)};
   }
 `;
+
+
+
+// ===== photoModal
+
+export const PhotoModalWrap = styled.div`
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  z-index: 9;
+`;
+
+export const PhotoArea = styled.div`
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    align-items: center;
+`
+
+export const PhotoImagesCon = styled.div`
+height :calc(100% - 60px);
+    img {
+    height : 100%;
+    width: auto;
+  }
+`
+
+export const PhotoBtnArea = styled.div`
+  width:100%;
+  max-width: 600px;
+`
+export const PhotoArticleArea = styled.div<{$set_open : boolean;}>`
+  display: ${p => p.$set_open ? 'block' : 'none'};
+  width :350px;
+  background: ${ p => p.theme.colors?.white};
+  overflow-y : scroll;
+`
+
+
+export const PostImageBackBtn = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition : 0.2s;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  &:hover{
+    background: ${p => p.theme.colors?.grayOp3};
+    fill: ${p => p.theme.colors?.black};
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: text-bottom;
+    fill: ${p => p.theme.colors?.white};
+  }
+`;
+
+export const PostArticleOpenBtn = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition : 0.2s;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  &:hover{
+    background: ${p => p.theme.colors?.grayOp3};
+    fill: ${p => p.theme.colors?.black};
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: text-bottom;
+    fill: ${p => p.theme.colors?.white};
+  }
+`;

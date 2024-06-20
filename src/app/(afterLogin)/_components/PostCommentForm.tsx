@@ -35,7 +35,7 @@ export default function PostCommentForm() {
           <span onClick={onClickBtn}>
             <RxImage />
           </span>
-          <S.PostSubmitBtn $validate={validate} type="submit" disabled={validate} >게시하기</S.PostSubmitBtn>
+          <S.PostSubmitBtn $validate={validate} type="submit" disabled={validate} >답글</S.PostSubmitBtn>
         </S.PostIconBox>
       </S.PostFormWrap>
     </S.PostFormCon>

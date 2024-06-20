@@ -1,3 +1,13 @@
-export default function PhotoModalPage() {
-  return <h1>개별게시글이미지</h1>;
+import PhotoModal from '@/app/(afterLogin)/_components/PhotoModal';
+interface IProps {
+  params: {
+    username: string;
+    id: string;
+    photoId: string;
+  };
+}
+export default function PhotoModalPage({ params }: IProps) {
+  return (
+      <PhotoModal params={params} />
+  );
 }
