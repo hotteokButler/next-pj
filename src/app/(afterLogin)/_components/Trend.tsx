@@ -9,7 +9,7 @@ interface ITrend {
 export default function Trend({ trend }: { trend: ITrend }) {
   return (
     <S.TrendLi>
-      <Link href='/home'>
+      <Link href={`/search?q=${trend.trendTit}&src=trend_click&vertical=trends`}>
         <S.TrendSub>{trend.trendSub}</S.TrendSub>
         <S.TrendTit>{trend.trendTit}</S.TrendTit>
         <S.TrendPostCnt>{trend.trendPostCnt} posts</S.TrendPostCnt>
