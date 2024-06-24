@@ -131,8 +131,8 @@ export const PostImagesUl = styled.ul<{ $imgCnt : number;}>`
 export const PostImages = styled.li`
  img {
   object-fit: cover;
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
  }
 `;
 
