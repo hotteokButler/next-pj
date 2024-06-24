@@ -1,3 +1,5 @@
-export default function User() {
-  return <h1>User</h1>;
+import UserProfilePage from "../_components/UserProfilePage";
+
+export default function UserPage() {
+  return <UserProfilePage/>;
 }

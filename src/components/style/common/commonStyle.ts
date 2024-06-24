@@ -38,3 +38,53 @@ export const ProfileImg = styled.div`
     background: rgba(0,0,0,0.05);
   }
 `
+
+export const ProfilePageImg = styled(ProfileImg)`
+  width: 40dvw;
+  max-width: 120px;
+  height: 40dvw;
+  max-height:120px;
+  margin-right: 30px;
+`
+
+export const ProfileWrap = styled.div`
+width: 100%;
+display: flex;
+align-items: center;
+padding: 25px 15px;
+`
+
+export const ProfileTxtWrap = styled.div`
+flex :1;
+ b  {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-botton:4px;
+  svg {
+    vertical-align: bottom;
+    margin-left: 2px;
+  }
+ }
+ span {
+  display: block;
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: ${p => p.theme.colors?.darkgray}
+ }
+`
+
+export const ProfileFollowBtn = styled.button`
+  padding: 13px 20px;
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  border-radius: 10rem;
+  background: ${(p) => p.theme.colors?.black};
+  color: ${p => p.theme.colors?.white};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(p) => p.theme.colors?.gray};
+  }
+`
