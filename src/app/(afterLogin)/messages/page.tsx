@@ -1,5 +1,6 @@
+import UserMessagePage from "../_components/UserMessagePage";
 
 
 export default function Messages() {
-  return <h2>messages</h2>;
+  return <UserMessagePage/>;
 }

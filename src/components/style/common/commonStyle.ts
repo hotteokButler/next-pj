@@ -58,7 +58,7 @@ export const ProfileTxtWrap = styled.div`
   b {
     font-weight: 700;
     font-size: 1.4rem;
-    margin-botton: 4px;
+    margin-bottom: 4px;
     svg {
       vertical-align: bottom;
       margin-left: 2px;
