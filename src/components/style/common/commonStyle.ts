@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
-export const ProfileImg = styled.div`
+export const ProfileImg = styled.div<{ $img_size ?: string;}>`
   position: relative;
-  width: 45px;
-  height: 45px;
+  width: ${ ({$img_size})=> $img_size || '47px'};
+  height: ${ ({$img_size})=> $img_size || '47px'};
   border-radius: 50%;
   overflow: hidden;
   background: #eee;
   cursor: pointer;
+  border: 1px solid ${({theme})=> theme.colors?.border};
 
   img {
     width: 100%;
