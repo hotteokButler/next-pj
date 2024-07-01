@@ -77,7 +77,7 @@ export default function Post({ noImage }: IProp) {
             &nbsp;
             <span aria-label='user_id'>&#64;{data.User.id}</span>
             &nbsp;
-            <span aria-label='post_data'>&middot;&nbsp;{dayjs(data.createdAt).fromNow()}</span>
+            <span aria-label='post_data'>&middot;&nbsp;{dayjs(data.createdAt).fromNow(true)}</span>
           </Link>
         </S.PostMeta>
         {/* 게시글 시작 */}
