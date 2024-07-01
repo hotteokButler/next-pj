@@ -5,11 +5,16 @@ import ProfileFixedTabProvider from './ProfileFixedTabProvider';
 import ProfileFixedTab from './ProfileFixedTab';
 import Post from './Post';
 
-export default function UserProfilePage({children} : {children ?: React.ReactNode}) {
+type IProp = {
+  children ?: React.ReactNode,
+  ariaLabel ?: string,
+}
+
+export default function UserProfilePage({children , ariaLabel} : IProp) {
   return (
     <ProfileFixedTabProvider>
       <ProfileFixedTab />
-      <div aria-label="user_article">
+      <div aria-label={ ariaLabel ? ariaLabel : "user_article"}>
         <Post/>
         <Post/>
         <Post/>

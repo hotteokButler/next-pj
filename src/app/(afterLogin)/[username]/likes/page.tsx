@@ -1,3 +1,6 @@
+import UserProfilePage from "../../_components/UserProfilePage";
+
+
 export default function Likes() {
-  return <h1>Likes</h1>;
+  return <UserProfilePage ariaLabel="user_likes"/>;
 }

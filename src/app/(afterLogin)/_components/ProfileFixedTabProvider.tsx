@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react';
 
 export const ProfileFixedTabContext = createContext({
   tab: 'main',
-  setTab : (value: 'main' | 'with_reply' | 'likes') =>{},
+  setTab : (value: 'main' | 'with_replies' | 'likes') =>{},
 });
 
 export default function ProfileFixedTabProvider({ children }: { children: React.ReactNode }) {

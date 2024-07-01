@@ -1,3 +1,5 @@
+import UserProfilePage from "../../_components/UserProfilePage";
+
 export default function WithReplies() {
-  return <h1>WithReplies</h1>;
+  return <UserProfilePage ariaLabel="user_with_replies"/>;
 }

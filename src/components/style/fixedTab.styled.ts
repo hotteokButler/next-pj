@@ -19,10 +19,11 @@ export const FixedTabWrap = styled.div`
 
 
 
-export const TabBtns = styled.div<{$tab_cnt ?: number | string;}>`
+export const TabBtns = styled.div<{$tab_cnt ?: number | string; $bd_btm ?:boolean;}>`
   display: grid;
   width: 100%;
   grid-template-columns: repeat(${p => p.$tab_cnt ? p.$tab_cnt : 2}, 1fr);
+  ${p => p.$bd_btm && `border-bottom : 1px solid #eee`}
 `;
 
 export const TabBtn = styled.button<{ $tabState: boolean }>`

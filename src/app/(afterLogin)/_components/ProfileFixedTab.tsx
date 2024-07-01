@@ -5,8 +5,8 @@ import React, { useContext } from 'react';
 import { GoArrowLeft } from 'react-icons/go';
 import { ProfileFixedTabContext } from './ProfileFixedTabProvider';
 import { useRouter } from 'next/navigation';
-import { BiSolidLock  ,BiSolidLockOpen} from "react-icons/bi";
-import {ProfileWrap ,ProfilePageImg,ProfileTxtWrap,ProfileFollowBtn } from '@/components/style/common/commonStyle'
+import { BiSolidLock, BiSolidLockOpen } from 'react-icons/bi';
+import { ProfileWrap, ProfilePageImg, ProfileTxtWrap, ProfileFollowBtn } from '@/components/style/common/commonStyle';
 
 export default function ProfileFixedTab() {
   const { tab, setTab } = useContext(ProfileFixedTabContext);
@@ -26,46 +26,47 @@ export default function ProfileFixedTab() {
   const onClickMain = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setTab('main');
+    router.replace(`/${user.id}`);
   };
   const onClickWithReply = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setTab('with_reply');
+    setTab('with_replies');
+    router.replace(`/${user.id}/with_replies`);
   };
   const onClickLikes = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setTab('likes');
+    router.replace(`/${user.id}/likes`);
   };
 
+
   return (
-
     <>
-    <S.FixedTabWrap>
-      <S.FixedTabBackBtn onClick={onClickBackBtn}>
-        <GoArrowLeft />
-      </S.FixedTabBackBtn>
-      <S.FixedTabH4>{user.nickname}</S.FixedTabH4>
-
-
-    </S.FixedTabWrap>
-    <ProfileWrap>
+      <S.FixedTabWrap>
+        <S.FixedTabBackBtn onClick={onClickBackBtn}>
+          <GoArrowLeft />
+        </S.FixedTabBackBtn>
+        <S.FixedTabH4>{user.nickname}</S.FixedTabH4>
+      </S.FixedTabWrap>
+      <ProfileWrap>
         <ProfilePageImg>
           <img src={user.image} alt={user.nickname} />
         </ProfilePageImg>
         <ProfileTxtWrap>
           <b>
-            {user.nickname} 
-            {user.private ? <BiSolidLock/> : <BiSolidLockOpen/>}
+            {user.nickname}
+            {user.private ? <BiSolidLock /> : <BiSolidLockOpen />}
           </b>
           <span>&#64;{user.id}</span>
         </ProfileTxtWrap>
-        <ProfileFollowBtn type="button">팔로우</ProfileFollowBtn >
+        <ProfileFollowBtn type='button'>팔로우</ProfileFollowBtn>
       </ProfileWrap>
 
-      <S.TabBtns $tab_cnt={3}>
+      <S.TabBtns $tab_cnt={3} $bd_btm={true}>
         <S.TabBtn type='button' onClick={onClickMain} $tabState={Boolean(tab === 'main')}>
           게시물
         </S.TabBtn>
-        <S.TabBtn type='button' onClick={onClickWithReply} $tabState={Boolean(tab === 'with_reply')}>
+        <S.TabBtn type='button' onClick={onClickWithReply} $tabState={Boolean(tab === 'with_replies')}>
           답글
         </S.TabBtn>
         <S.TabBtn type='button' onClick={onClickLikes} $tabState={Boolean(tab === 'likes')}>
