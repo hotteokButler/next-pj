@@ -73,7 +73,7 @@ export const PostConentWrap = styled.article`
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid ${(p) => p.theme.colors?.border};
-
+  gap: 10px;
   &:hover {
     background-color: ${(p) => p.theme.colors?.grayOp3};
     cursor: pointer;
@@ -84,8 +84,7 @@ export const PostConentCon = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: calc(100% - 55px);
-  margin: 0 0 0 10px;
+  flex:1;
 `;
 
 export const PostMeta = styled.div`
