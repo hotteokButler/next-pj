@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
+//  대신 응답 보낼 부분
+
 export const handler = [
   http.post('/api/login', () => {
     console.log('로그인');
