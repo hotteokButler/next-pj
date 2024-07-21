@@ -16,6 +16,7 @@ const colors = {
   border : '#eee',
   pointColor: '#1d9bf0',
   darkBlue :'#0b80cf',
+  errorColor :'#ff6347',
 };
 
 const deviceSizes = {

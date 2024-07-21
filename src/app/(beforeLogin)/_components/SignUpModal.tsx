@@ -1,27 +1,35 @@
 'use client';
+
 import * as S from '@/components/style/modal.styled';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import onSubmit from '../_lib/signup';
 import { useRouter } from 'next/navigation';
 import { BsTwitterX } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
+import { TbAlertCircle } from "react-icons/tb";
+import { useFormState, useFormStatus } from 'react-dom';
+
+const showMessage = (message: string | null | undefined): string => {
+  if (message === 'no_id') return '아이디를 입력하세요';
+  if (message === 'no_nickname') return '닉네임을 입력하세요';
+  if (message === 'no_password') return '비밀번호를 입력하세요';
+  if (message === 'no_image') return '이미지를 업로드하세요';
+  if (message === 'user_exists') return '이미 사용 중인 아이디 입니다.';
+  return '';
+};
 
 export default function SignUpModal() {
-  const [id, setId] = useState();
-  const [nickname, setNickname] = useState();
-  const [password, setPassword] = useState();
-  const [file, setFile] = useState();
+  const [state, formAction] = useFormState(onSubmit, { message: 'none' });
+  const { pending } = useFormStatus();
 
-  const [message, setMessage] = useState();
-  const [varified, setVarified] = useState(false);
-  const [state, setState] = useState(false);
-
+  console.log(state);
   const router = useRouter();
-  
+
   const onClickCloseBtn = (e: React.MouseEvent) => {
     e.preventDefault();
     router.back();
   };
-  const onSubmit = () => {};
+
   const onChangeId = () => {};
   const onChangeNickname = () => {};
   const onChangePassword = () => {};
@@ -40,8 +48,8 @@ export default function SignUpModal() {
         <S.ModalSubTitle>계정을 생성하세요.</S.ModalSubTitle>
         {/* 상단 E N D =============== */}
         {/* 본문 START =============== */}
-        <S.ModalForm name='login_f' onSubmit={onSubmit}>
-          <S.ModalLabel htmlFor='user_id' className={state ? 'on' : ''}>
+        <S.ModalForm name='login_f' action={formAction}>
+          <S.ModalLabel htmlFor='user_id'>
             <S.ModalTag>아이디</S.ModalTag>
             <S.ModalInputText
               type='text'
@@ -51,7 +59,7 @@ export default function SignUpModal() {
               onChange={onChangeId}
             />
           </S.ModalLabel>
-          <S.ModalLabel htmlFor='user_nick' className={state ? 'on' : ''}>
+          <S.ModalLabel htmlFor='user_nick'>
             <S.ModalTag>닉네임</S.ModalTag>
             <S.ModalInputText
               type='text'
@@ -61,7 +69,7 @@ export default function SignUpModal() {
               onChange={onChangeNickname}
             />
           </S.ModalLabel>
-          <S.ModalLabel htmlFor='user_password' className={state ? 'on' : ''}>
+          <S.ModalLabel htmlFor='user_password'>
             <S.ModalTag>비밀번호</S.ModalTag>
             <S.ModalInputText
               type='password'
@@ -71,17 +79,26 @@ export default function SignUpModal() {
               onChange={onChangePassword}
             />
           </S.ModalLabel>
-          <S.ModalLabel htmlFor='user_profile' className={state ? 'on' : ''}>
+          <S.ModalLabel htmlFor='user_profile'>
             <S.ModalTag>프로필</S.ModalTag>
             <S.ModalInputText
               type='file'
-              accept="image/*"
+              accept='image/*'
               id='user_profile'
               name='user_profile'
               onChange={onChangeFile}
             />
           </S.ModalLabel>
-          <S.ModalSubmitBtn $varified={varified} disabled={varified}>가입하기</S.ModalSubmitBtn>
+          {(state?.message && state?.message !== 'none' )&& (
+            <S.ErrorMessage>
+              <TbAlertCircle />
+              {showMessage(state.message)}
+            </S.ErrorMessage>
+          )}
+
+          <S.ModalSubmitBtn $varified={state?.message !== 'none'} disabled={pending}>
+            가입하기
+          </S.ModalSubmitBtn>
         </S.ModalForm>
 
         {/* 본문 E N D =============== */}

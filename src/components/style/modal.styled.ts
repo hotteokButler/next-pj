@@ -67,6 +67,8 @@ export const ModalLabel = styled.label`
   padding: 0.5rem 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
+
+  &:has(input:active),
   &:focus,
   &:active,
   &:hover,
@@ -115,7 +117,6 @@ export const ModalSubmitBtn = styled.button<{ $varified: boolean }>`
   }
 `;
 
-
 // post modal
 
 export const PostModalCon = styled.div`
@@ -127,12 +128,11 @@ export const PostModalCon = styled.div`
   background: ${(props) => props.theme.colors?.white};
 `;
 
-
 export const PostFormCon = styled.div`
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 60px 15px 0px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 60px 15px 0px;
 `;
 
 export const PostFormWrap = styled.form`
@@ -190,8 +190,6 @@ export const PostSubmitBtn = styled.button<{ $validate: boolean }>`
   }
 `;
 
-
-
 // ===== photoModal
 
 export const PhotoModalWrap = styled.div`
@@ -210,51 +208,50 @@ export const PhotoModalWrap = styled.div`
 `;
 
 export const PhotoArea = styled.div`
-    position: relative;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100dvh;
-    align-items: center;
-`
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  align-items: center;
+`;
 
 export const PhotoImagesCon = styled.div`
-height :calc(100% - 60px);
-    img {
-    height : 100%;
+  height: calc(100% - 60px);
+  img {
+    height: 100%;
     width: auto;
   }
-`
+`;
 
 export const PhotoBtnArea = styled.div`
-  width:100%;
+  width: 100%;
   max-width: 600px;
-`
-export const PhotoArticleArea = styled.div<{$set_open : boolean;}>`
-  display: ${p => p.$set_open ? 'block' : 'none'};
-  width :350px;
-  background: ${ p => p.theme.colors?.white};
-  overflow-y : scroll;
-`
-
+`;
+export const PhotoArticleArea = styled.div<{ $set_open: boolean }>`
+  display: ${(p) => (p.$set_open ? 'block' : 'none')};
+  width: 350px;
+  background: ${(p) => p.theme.colors?.white};
+  overflow-y: scroll;
+`;
 
 export const PostImageBackBtn = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition : 0.2s;
+  transition: 0.2s;
   position: absolute;
   top: 10px;
   left: 10px;
-  &:hover{
-    background: ${p => p.theme.colors?.grayOp3};
-    fill: ${p => p.theme.colors?.black};
+  &:hover {
+    background: ${(p) => p.theme.colors?.grayOp3};
+    fill: ${(p) => p.theme.colors?.black};
   }
   svg {
     width: 20px;
     height: 20px;
     vertical-align: text-bottom;
-    fill: ${p => p.theme.colors?.white};
+    fill: ${(p) => p.theme.colors?.white};
   }
 `;
 
@@ -262,18 +259,33 @@ export const PostArticleOpenBtn = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition : 0.2s;
+  transition: 0.2s;
   position: absolute;
   top: 10px;
   right: 10px;
-  &:hover{
-    background: ${p => p.theme.colors?.grayOp3};
-    fill: ${p => p.theme.colors?.black};
+  &:hover {
+    background: ${(p) => p.theme.colors?.grayOp3};
+    fill: ${(p) => p.theme.colors?.black};
   }
   svg {
     width: 20px;
     height: 20px;
     vertical-align: text-bottom;
-    fill: ${p => p.theme.colors?.white};
+    fill: ${(p) => p.theme.colors?.white};
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  width: 100%;
+  text-align: center;
+  margin-bottom: -15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors?.errorColor};
+  svg {
+    width: 18px;
+    height: 18px;
+    vertical-align: text-bottom;
+    margin-right: 3px;
   }
 `;
