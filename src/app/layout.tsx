@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import StyledComponentsRegistry from '@/lib/registry';
 import ThemeClient from '@/components/themeClient';
-
+import MSWComponent from '@/app/_components/MSWComponent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body className={inter.className}>
+        <MSWComponent/>
         <StyledComponentsRegistry>
           <ThemeClient>
             {children}
