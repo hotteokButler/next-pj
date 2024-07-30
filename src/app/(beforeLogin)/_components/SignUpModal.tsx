@@ -24,6 +24,7 @@ export default function SignUpModal() {
 
   const router = useRouter();
 
+
   const onClickCloseBtn = (e: React.MouseEvent) => {
     e.preventDefault();
     router.back();
@@ -88,7 +89,7 @@ export default function SignUpModal() {
               onChange={onChangeFile}
             />
           </S.ModalLabel>
-          {state  && (
+          {(state && showMessage(state?.message ? state?.message : '') !== '')  && (
             <S.ErrorMessage>
               <TbAlertCircle />
               {showMessage(state?.message ? state?.message : '')}

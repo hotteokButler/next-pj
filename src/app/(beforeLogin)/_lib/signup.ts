@@ -23,23 +23,19 @@ export const onSubmit = async (prevData: any, formData: FormData) => {
   let ShouldRedirect = false;
 
   try {
-    const submit = async (formData: FormData) => {
-
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
-        method: 'POST', // *GET, POST, PUT, DELETE 등
-        credentials: 'include', // include 쿠키 전달 가능
-        body: formData,
-      });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
+      method: 'POST', // *GET, POST, PUT, DELETE 등
+      credentials: 'include', // include 쿠키 전달 가능
+      body: formData,
+    });
 
 
-      if(response.status === 403) {
-        return {message : 'user_exists'};
-      }
+    if(response.status === 403) {
+      return {message : 'user_exists'};
+    }
 
-      console.log(await response.json());
 
-      ShouldRedirect = true;
-    };
+    ShouldRedirect = true;
   } catch (errors) {
     console.log(errors);
   }
