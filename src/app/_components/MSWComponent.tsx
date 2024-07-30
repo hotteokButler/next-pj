@@ -1,5 +1,6 @@
 "use client";
 
+import worker from '@/mocks/browser';
 import React, { useEffect } from 'react'
 
 export default function MSWComponent() {

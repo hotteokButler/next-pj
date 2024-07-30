@@ -35,7 +35,7 @@ export default function Main() {
           <S.MainSection>
             <span>또는</span>
           </S.MainSection>
-          <Link href='/i/flow/signup'>
+          <Link href='/i/flow/signup' scroll={false}>
             <S.MainButton
               $noneIcon={true}
               $bgcolor='#1d9bf0'
@@ -49,14 +49,11 @@ export default function Main() {
           </Link>
         </S.MainLis>
         <S.MainLis>
-          <S.MainSubTitle $ftsize='1.2rem' $smft='4vw'>이미 트위터에 가입하셨나요?</S.MainSubTitle>
-          <Link href='/login'>
-            <S.MainButton
-              $noneIcon={true}
-              $fontcolor='#1d9bf0'
-              $hfontcolor='#1272b2'
-              $hbgcolor='#0f86d63a'
-            >
+          <S.MainSubTitle $ftsize='1.2rem' $smft='4vw'>
+            이미 트위터에 가입하셨나요?
+          </S.MainSubTitle>
+          <Link href='/login' scroll={false}>
+            <S.MainButton $noneIcon={true} $fontcolor='#1d9bf0' $hfontcolor='#1272b2' $hbgcolor='#0f86d63a'>
               <span>로그인</span>
             </S.MainButton>
           </Link>

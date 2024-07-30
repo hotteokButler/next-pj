@@ -1,15 +1,15 @@
 'use client';
 
 import * as S from '@/components/style/modal.styled';
-import React, { useState } from 'react';
-import onSubmit from '../_lib/signup';
+import React from 'react';
+import {onSubmit} from '../_lib/signup';
 import { useRouter } from 'next/navigation';
 import { BsTwitterX } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
 import { TbAlertCircle } from "react-icons/tb";
 import { useFormState, useFormStatus } from 'react-dom';
 
-const showMessage = (message: string | null | undefined): string => {
+const showMessage = (message ?: string  | null) : string  => {
   if (message === 'no_id') return '아이디를 입력하세요';
   if (message === 'no_nickname') return '닉네임을 입력하세요';
   if (message === 'no_password') return '비밀번호를 입력하세요';
@@ -19,10 +19,9 @@ const showMessage = (message: string | null | undefined): string => {
 };
 
 export default function SignUpModal() {
-  const [state, formAction] = useFormState(onSubmit, { message: 'none' });
+  const [state, formAction] = useFormState(onSubmit, null);
   const { pending } = useFormStatus();
 
-  console.log(state);
   const router = useRouter();
 
   const onClickCloseBtn = (e: React.MouseEvent) => {
@@ -89,14 +88,14 @@ export default function SignUpModal() {
               onChange={onChangeFile}
             />
           </S.ModalLabel>
-          {(state?.message && state?.message !== 'none' )&& (
+          {state  && (
             <S.ErrorMessage>
               <TbAlertCircle />
-              {showMessage(state.message)}
+              {showMessage(state?.message ? state?.message : '')}
             </S.ErrorMessage>
           )}
 
-          <S.ModalSubmitBtn $varified={state?.message !== 'none'} disabled={pending}>
+          <S.ModalSubmitBtn $varified={state?.message !== null} disabled={pending}>
             가입하기
           </S.ModalSubmitBtn>
         </S.ModalForm>
