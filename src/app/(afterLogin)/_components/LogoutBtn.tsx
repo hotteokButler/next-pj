@@ -28,7 +28,7 @@ export default function LogoutBtn() {
   if(!me?.user) {return null};
 
   return (
-    <S.LogoutBtn>
+    <S.LogoutBtn onClick={handleLogoutBtn}>
       <ProfileImg>
         <img src={me.user?.image!} alt={me.user?.nickname} />
       </ProfileImg>
