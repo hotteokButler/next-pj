@@ -7,5 +7,5 @@ export default auth((req) => {
 })
 
 export const config = {
-  matcher: ['/compose/post', '/compose/comment', '/explore', '/home', '/messages', 'search'],
+  matcher: ['/compose/post', '/compose/comment', '/explore', '/home', '/messages', '/search'],
 };

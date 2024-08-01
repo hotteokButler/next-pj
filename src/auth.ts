@@ -7,33 +7,44 @@ export const {
   signOut,
   auth,
 } = NextAuth({
+  pages : { // custom 페이지 연결
+    signIn: '/i/flow/login',
+    newUser: '/i/flow/signip',
+  }
+  ,
   providers: [
     Credentials({
       credentials: {
-        email: {},
-        password: {},
+        username: { label: "user_id", type : "text" },
+        password: { label: "user_password", type: "password" },
       },
       authorize: async (credentials) => {
-        let user = null;
-
-        const authResponse = await fetch('/user/login', {
+        const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'applicatoin/json',
           },
-          body: JSON.stringify(credentials),
+          body: JSON.stringify({
+            id: credentials.username,
+            password : credentials.password
+          }),
         });
 
-        if (!authResponse.ok) {
+        if (!authResponse.ok) {//로그인 실패
           return null;
         }
 
-        if (!user) {
-          throw new Error('User not found.');
-        }
+        const user = await authResponse.json();
+        console.log('user : ', user);
 
+       
         // return user object with their profile data
-        return user;
+        return {
+          email:user.id,
+          name:user.nickname,
+          image: user.image,
+          ...user,
+        };
       },
     }),
   ],
