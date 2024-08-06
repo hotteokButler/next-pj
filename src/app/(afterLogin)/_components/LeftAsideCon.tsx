@@ -8,17 +8,18 @@ import { RiQuillPenLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import LogoutBtn from './LogoutBtn';
+import { useEffect, useState } from 'react';
 
 export default function LeftAsideCon() {
   const segment = useSelectedLayoutSegment();
+  
+  const user ={
+    id: 'hotteokButler',
+    nickname: '호떡집사',
+    image: '/hotteokButler.jpg',
+    private: false
+  }
 
-  const user = {
-      // 임시
-      id: 'hotteokButler',
-      nickname: '호떡집사',
-      image: '/hotteokButler.jpg',
-      private : false
-  };
 
   return (
     <S.LeftSideWrap>
@@ -70,7 +71,7 @@ export default function LeftAsideCon() {
           </S.TabMenu>
         </S.LeftSideMenu>
 
-        <LogoutBtn/>
+        <LogoutBtn />
       </div>
     </S.LeftSideWrap>
   );
