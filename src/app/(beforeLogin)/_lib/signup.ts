@@ -1,5 +1,6 @@
 "use server";
 
+import { signIn } from "@/auth";
 import { redirect } from "next/navigation";
 
 export const onSubmit = async (prevData: any, formData: FormData) => {
@@ -26,16 +27,31 @@ export const onSubmit = async (prevData: any, formData: FormData) => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
       method: 'POST', // *GET, POST, PUT, DELETE 등
       credentials: 'include', // include 쿠키 전달 가능
-      body: formData,
+      headers: {
+        'Content-Type': 'applicatoin/json',
+      },
+      body: JSON.stringify({
+        name: formData.get('user_nick'),
+        nickname: formData.get('user_nick'),
+        email: formData.get('user_id'),
+        image: formData.get('user_profile')
+      }),
     });
 
 
     if(response.status === 403) {
       return {message : 'user_exists'};
     }
-
+    console.log(await response.json());
 
     ShouldRedirect = true;
+
+    await signIn('credentials', {
+      username : formData.get('user_id'),
+      password: formData.get('user_password'),
+      redirect: false,
+    })
+
   } catch (errors) {
     console.log(errors);
   }

@@ -42,7 +42,9 @@ export const {
         return {
           email:user.id,
           name:user.nickname,
+          nickname: user.nickname,
           image: user.image,
+          private: user.private || false,
           ...user,
         };
       },

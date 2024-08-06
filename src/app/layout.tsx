@@ -4,6 +4,7 @@ import './globals.css';
 import StyledComponentsRegistry from '@/lib/registry';
 import ThemeClient from '@/components/themeClient';
 import MSWComponent from '@/app/_components/MSWComponent';
+import AuthSession from './_components/AuthSession';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body className={inter.className}>
-        <MSWComponent/>
-        <StyledComponentsRegistry>
-          <ThemeClient>
-            {children}
-          </ThemeClient>
-        </StyledComponentsRegistry>
+        <MSWComponent />
+        <AuthSession>
+          <StyledComponentsRegistry>
+            <ThemeClient>{children}</ThemeClient>
+          </StyledComponentsRegistry>
+        </AuthSession>
       </body>
     </html>
   );
