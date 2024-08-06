@@ -32,7 +32,6 @@ export const onSubmit = async (prevData: any, formData: FormData) => {
       },
       body: JSON.stringify({
         name: formData.get('user_nick'),
-        nickname: formData.get('user_nick'),
         email: formData.get('user_id'),
         image: formData.get('user_profile')
       }),
