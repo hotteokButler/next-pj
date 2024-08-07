@@ -46,7 +46,7 @@ export const onSubmit = async (prevData: any, formData: FormData) => {
 
     ShouldRedirect = true;
 
-    await signIn('credentials', {
+    await signIn('credentials', { //회원가입 성공 후 로그인
       username : formData.get('user_id'),
       password: formData.get('user_password'),
       redirect: false,
