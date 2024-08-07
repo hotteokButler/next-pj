@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import Main from '../_components/Main';
 import { useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 
 /*
 기본적으로 server component라서 
@@ -19,9 +20,19 @@ client routing 사용
 */
 export default function Login() {
   const router = useRouter();
+  const { data: session } = useSession();
+  let isSession = false;
 
   useEffect(() => {
-    router.replace('/i/flow/login', { scroll: false });
-  }, []);
-  return <Main />;
+    if (session?.user) {
+      router.replace('/home', { scroll: false });
+      isSession = true;
+    } else {
+      router.replace('/i/flow/login');
+    }
+  }, [session]);
+
+ 
+  if(isSession)  return <Main />;
+
 }
