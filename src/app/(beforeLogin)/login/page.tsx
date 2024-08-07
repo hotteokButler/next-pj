@@ -33,6 +33,7 @@ export default function Login() {
   }, [session]);
 
  
-  if(isSession)  return <Main />;
+  if(isSession)  {return <Main />}
+  else{ return null}
 
 }
