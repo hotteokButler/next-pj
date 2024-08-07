@@ -38,7 +38,7 @@ export const {
           headers: {
             'Content-Type': 'applicatoin/json',
           },
-          body: JSON.stringify({
+          body: JSON.stringify({ //auth.js에서는 username과 password로 고정되어 있어 일치하도록 id password로 변경
             id: credentials.username,
             password : credentials.password
           }),
