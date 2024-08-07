@@ -6,15 +6,15 @@ import { ProfileImg } from '@/components/style/common/commonStyle';
 import { BiSolidLock, BiSolidLockOpen } from 'react-icons/bi';
 import { signOut, useSession  } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { User } from 'next-auth';
 
 
 
 
 export default function LogoutBtn() {
   const router = useRouter();
-  const {data} = useSession();
-  const me = data;
+  const {data : me} = useSession();
+
+  console.log(me);
 
   const handleLogoutBtn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
@@ -33,9 +33,9 @@ export default function LogoutBtn() {
       <span>
         <S.LogoutBtnTxt $isId={false}>
           {me.user?.name}
-          {me.user?.private ? <BiSolidLock /> : <BiSolidLockOpen />}
+          {me.user?.isPrivate === 'true' ? <BiSolidLock /> : <BiSolidLockOpen />}
         </S.LogoutBtnTxt>
-        <S.LogoutBtnTxt $isId={true}>&#64;{me.user?.id}</S.LogoutBtnTxt>
+        <S.LogoutBtnTxt $isId={true}>&#64;{me.user?.name}</S.LogoutBtnTxt>
       </span>
     </S.LogoutBtn>
   );

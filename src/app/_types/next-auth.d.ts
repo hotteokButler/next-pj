@@ -2,20 +2,33 @@ import NextAuth, { type DefaultSession } from 'next-auth';
 
 // session data에 custom data 추가 하기
 
-declare module 'next-auth' {
+export type isPrivateType = 'false' | 'true';
+export type roleType = 'admin' | 'user';
+ 
+declare module "next-auth" {
+  /**
+   * Returned by `auth`, `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
   interface Session {
     user: {
-      private : boolean;
-      role: 'admin' | 'user';
-    } & DefaultSession['user'];
+      isPrivate ?: isPrivateType;
+      role?: roleType;
+
+    } & DefaultSession["user"]
   }
 }
-
-import { JWT } from '@auth/core/jwt';
-
-declare module '@auth/core/jwt' {
-  interface JWT {
-    private : boolean;
-    role: 'admin' | 'user';
-  }
-}
+ 
+export const { auth, handlers } = NextAuth({
+  callbacks: {
+    session({ session, token, user }) {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          isPrivate ?: user.isPrivate,
+          role?: user.role,
+        },
+      }
+    },
+  },
+})

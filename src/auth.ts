@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+import { isPrivateType, roleType } from './app/_types/next-auth';
 
 export const {
   handlers: { GET, POST },
@@ -10,8 +11,21 @@ export const {
   pages : { // custom 페이지 연결
     signIn: '/i/flow/login',
     newUser: '/i/flow/signip',
-  }
-  ,
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token }) {
+      if (session.user && token.role) {
+        session.user.role = token.role as roleType;
+      }
+      if (session.user && token.isPrivate) {
+        session.user.isPrivate = token.isPrivate as isPrivateType;
+      }
+      return session;
+    },
+  },
   providers: [
     Credentials({
       credentials: {
@@ -43,7 +57,6 @@ export const {
           email:user.id,
           name:user.nickname,
           image: user.image,
-          private: user.private || false,
           ...user,
         };
       },

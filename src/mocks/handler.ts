@@ -7,7 +7,7 @@ export const handler = [
     console.log('로그인');
 
     return HttpResponse.json(
-      {id: 'anonymous02', nickname: 'anonymous', image: '/user_02.jpg' ,  private: false,},
+      {id: 'anonymous02', nickname: 'anonymous', image: '/user_02.jpg', isPrivate: 'false', role: 'user'},
       {
         headers: {
           'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
