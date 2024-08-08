@@ -13,10 +13,10 @@ export const {
     newUser: '/i/flow/signip',
   },
   callbacks: {
-    async jwt({ token, user }) {
+    jwt : async ({ token, user }) => {
       return { ...token, ...user };
     },
-    async session({ session, token }) {
+    session : async ({ session, token }) => {
       if (session.user && token.role) {
         session.user.role = token.role as roleType;
       }
