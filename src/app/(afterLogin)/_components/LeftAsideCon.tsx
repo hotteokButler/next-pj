@@ -8,18 +8,11 @@ import { RiQuillPenLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import LogoutBtn from './LogoutBtn';
-import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 export default function LeftAsideCon() {
   const segment = useSelectedLayoutSegment();
-  
-  const user ={
-    id: 'hotteokButler',
-    nickname: '호떡집사',
-    image: '/hotteokButler.jpg',
-    private: false
-  }
-
+  const { data } = useSession();
 
   return (
     <S.LeftSideWrap>
@@ -27,51 +20,53 @@ export default function LeftAsideCon() {
         <S.LeftSideMenu>
           {/* logo ==== */}
           <S.ConLogo>
-            <Link href='/home'>
+            <Link href={data?.user ? '/home' : '/'} scroll={false}>
               <BsTwitterX />
             </Link>
           </S.ConLogo>
 
           {/* tab menus ==== */}
-          <S.TabMenu>
-            <Link href='/home'>
-              <S.LinkIcon $state={segment === 'home'} $getNew={false}>
-                <GoHome />
-              </S.LinkIcon>
-              <S.LinkTxt $state={segment === 'home'}>홈</S.LinkTxt>
-            </Link>
-            <Link href='/explore'>
-              <S.LinkIcon $state={segment === 'explore' || segment === 'search'} $getNew={false}>
-                <GoSearch />
-              </S.LinkIcon>
-              <S.LinkTxt $state={segment === 'explore' || segment === 'search'}>탐색하기</S.LinkTxt>
-            </Link>
-            <Link href='/messages'>
-              <S.LinkIcon $state={segment === 'messages'} $getNew={false}>
-                <IoMailOutline />
-              </S.LinkIcon>
-              <S.LinkTxt $state={segment === 'messages'}>쪽지</S.LinkTxt>
-            </Link>
-
-            {user.id && (
-              <Link href={`/${user.id}`}>
-                <S.LinkIcon $state={segment === user.id} $getNew={false}>
-                  <IoPersonOutline />
+          {data?.user && (
+            <S.TabMenu>
+              <Link href='/home' scroll={false}>
+                <S.LinkIcon $state={segment === 'home'} $getNew={false}>
+                  <GoHome />
                 </S.LinkIcon>
-                <S.LinkTxt $state={segment === user.id}>프로필</S.LinkTxt>
+                <S.LinkTxt $state={segment === 'home'}>홈</S.LinkTxt>
               </Link>
-            )}
+              <Link href='/explore'  scroll={false}>
+                <S.LinkIcon $state={segment === 'explore' || segment === 'search'} $getNew={false}>
+                  <GoSearch />
+                </S.LinkIcon>
+                <S.LinkTxt $state={segment === 'explore' || segment === 'search'}>탐색하기</S.LinkTxt>
+              </Link>
+              <Link href='/messages'  scroll={false}>
+                <S.LinkIcon $state={segment === 'messages'} $getNew={false}>
+                  <IoMailOutline />
+                </S.LinkIcon>
+                <S.LinkTxt $state={segment === 'messages'}>쪽지</S.LinkTxt>
+              </Link>
 
-            <S.ComposePostBtn>
-              <Link href='/compose/post'>
-                <RiQuillPenLine />
-                <span>게시하기</span>
-              </Link>
-            </S.ComposePostBtn>
-          </S.TabMenu>
+              {data?.user.email && ( // typescript auth.js 때문에 id 대신 id값 할당한, email 사용
+                <Link href={`/${data.user.email}`}  scroll={false}>
+                  <S.LinkIcon $state={segment === data.user.email} $getNew={false}>
+                    <IoPersonOutline />
+                  </S.LinkIcon>
+                  <S.LinkTxt $state={segment === data.user.email}>프로필</S.LinkTxt>
+                </Link>
+              )}
+
+              <S.ComposePostBtn>
+                <Link href='/compose/post'  scroll={false}>
+                  <RiQuillPenLine />
+                  <span>게시하기</span>
+                </Link>
+              </S.ComposePostBtn>
+            </S.TabMenu>
+          )}
         </S.LeftSideMenu>
 
-        <LogoutBtn />
+        {data?.user && <LogoutBtn />}
       </div>
     </S.LeftSideWrap>
   );

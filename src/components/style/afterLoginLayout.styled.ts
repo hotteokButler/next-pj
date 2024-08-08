@@ -277,4 +277,9 @@ export const RightSideCon = styled.div<{$isExplore : boolean ; $bg_white : boole
     font-weight: 700;
     font-size: 1.2rem;
   }
+  h4 {
+    padding: 15px;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
 `;

@@ -11,6 +11,8 @@ interface IProps {
 }
 
 export default function AfterLoginlayout({ children , modal}: IProps) {
+
+  
   return (
     <LayoutWrapper>
       {/* left aside  ======== */}
