@@ -3,8 +3,7 @@
 import { ProfileImg } from '@/components/style/common/commonStyle';
 import * as S from '@/components/style/follow.styled';
 import Link from 'next/link';
-import { useSession  } from 'next-auth/react';
-
+import { useSession } from 'next-auth/react';
 
 interface IFollower {
   id: string;
@@ -13,14 +12,12 @@ interface IFollower {
 }
 
 export default function Follow({ follower }: { follower: IFollower }) {
-  const {data} = useSession();    
+  const { data } = useSession();
 
-  const onFollow : React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  const onFollow: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-
   };
 
-  
   return (
     <S.FollowerRecommendLis>
       <div aria-label='profile_info'>
@@ -37,18 +34,17 @@ export default function Follow({ follower }: { follower: IFollower }) {
         </div>
       </div>
 
-     { data?.user && 
-      (<S.FollowBtn type='button' onClick={onFollow}>
-        팔로우
-      </S.FollowBtn>)
-      } 
+      {data?.user && (
+        <S.FollowBtn type='button' onClick={onFollow}>
+          팔로우
+        </S.FollowBtn>
+      )}
 
-      {(!data?.user) &&
-       (<S.FollowBtn type='button' onClick={onFollow}>
-        <Link href="/login">팔로우</Link>
-      </S.FollowBtn>)
-      }
-     
+      {!data?.user && (
+        <S.FollowBtn type='button' onClick={onFollow}>
+          <Link href='/login'>팔로우</Link>
+        </S.FollowBtn>
+      )}
     </S.FollowerRecommendLis>
   );
 }
