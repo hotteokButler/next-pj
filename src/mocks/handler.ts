@@ -1,10 +1,10 @@
 import { http, HttpResponse } from 'msw';
 import { faker } from '@faker-js/faker';
 
-function generateDate() {
+function generateDate() {  //랜덤 날짜 설정
   const lastWeek = new Date(Date.now());
   lastWeek.setDate(lastWeek.getDate() - 7);
-  return faker.date.between({
+  return faker.date.between({ // 지난 주 부터 오늘까지 임의의 날짜 설정
     from: lastWeek,
     to: Date.now(),
   });
@@ -22,10 +22,10 @@ export const handler = [
   http.post('/api/login', () => {
     console.log('로그인');
 
-    return HttpResponse.json(
+    return HttpResponse.json( // json 형식으로 응답 보냄 (실제 보내지는 데이터)
       { id: 'anonymous02', nickname: 'anonymous', image: '/user_02.jpg', isPrivate: 'false', role: 'user' },
       {
-        headers: {
+        headers: { // 헤더 설정
           'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
         },
       }
@@ -35,7 +35,9 @@ export const handler = [
   http.post('/api/logout', () => {
     console.log('로그아웃');
 
-    return new HttpResponse(null, {
+    return new HttpResponse(
+      null, // 보낼 데이터가 없을 때 new HttpRespose를 많이 씀
+      {
       headers: {
         'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0',
       },
@@ -43,10 +45,11 @@ export const handler = [
   }),
   http.post('/api/users', async ({ request }) => {
     console.log('회원가입');
-    // return HttpResponse.text(JSON.stringify('user_exists'), {
+    // return HttpResponse.text(JSON.stringify('user_exists'), { //응답이 아니라 에러일때 또는 redirect일 때 status를 바꿔 줄 수 있음
     //   status: 403,
     // });
-    return HttpResponse.text(JSON.stringify('ok'), {
+    return HttpResponse.text(JSON.stringify('ok'), // text를 보낼 대는 HttpResponse.text를 많이 씀
+    {
       headers: {
         'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
       },
@@ -57,8 +60,8 @@ export const handler = [
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
     return HttpResponse.json([
       {
-        postId: cursor + 1,
-        User: User[0],
+        postId: cursor + 1, //포스트 아이디
+        User: User[0], //작성자
         content: `${cursor + 1} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
