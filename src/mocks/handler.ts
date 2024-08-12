@@ -69,7 +69,7 @@ export const handler = [
       },
       {
         postId: cursor + 2,
-        User: User[0],
+        User: User[1],
         content: `${cursor + 2} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
@@ -86,7 +86,7 @@ export const handler = [
       },
       {
         postId: cursor + 4,
-        User: User[0],
+        User: User[2],
         content: `${cursor + 4} Z.com is so marvelous. I'm gonna buy that.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
