@@ -1,11 +1,16 @@
 import { ProfileImg } from '@/components/style/common/commonStyle';
 import * as S from '@/components/style/post.style';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
 import PostActionButtons from './PostActionButtons';
 import PostImageCon from './PostImageCon';
 import PostArticleWrap from './PostArticleWrap';
 import { Post as IPost } from '@/model/Post';
 
+dayjs.locale('ko');
+dayjs.extend(relativeTime);
 
 interface IProp {
   noImage?: boolean;

@@ -1,4 +1,4 @@
-import { PostImage } from './PostImages';
+import { PostImage } from './PostImage';
 import { User } from './User';
 
 export interface Post {
@@ -6,5 +6,5 @@ export interface Post {
   User: User;
   content: string;
   Images: PostImage[];
-  createdAt: Date;
+  createdAt: Date | string;
 }
