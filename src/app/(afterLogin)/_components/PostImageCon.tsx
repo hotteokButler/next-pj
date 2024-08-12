@@ -2,12 +2,12 @@
 
 import * as S from '@/components/style/post.style';
 import React from 'react';
-import { IData } from './Post';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Post } from '@/model/Post';
 
 interface IProps {
-  data: IData;
+  data:  Post;
   imgCnt: number;
 }
 

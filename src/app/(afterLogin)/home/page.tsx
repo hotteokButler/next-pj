@@ -5,26 +5,25 @@ import HomeFixedTab from '../_components/HomeFixedTab';
 import HomeFixedTabProvider from '../_components/HomeFixedTabProvider';
 import PostForm from '../_components/PostForm';
 import Post from '../_components/Post';
+import { Post as IPost } from '@/model/Post';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import getPostRecommens from '../_lib/getPostRecommens';
 
 export default function Home() {
+  const queryClient = useQueryClient();
+  const { data, isSuccess } = useQuery({ queryKey: ['posts', 'recommends'], queryFn:  getPostRecommens });
+
+  if (!isSuccess) return null;
+
+  console.log(data);
+
   return (
     <HomeFixedTabProvider>
       <S.HomeCon>
         <HomeFixedTab />
-        <PostForm/>
+        <PostForm />
         {/* Posting 노출 */}
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
+        {data  && data.map((post :IPost )=> <Post key={post.postId} post={post}/>)}
       </S.HomeCon>
     </HomeFixedTabProvider>
   );

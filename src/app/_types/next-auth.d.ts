@@ -1,9 +1,9 @@
+import { isPrivateType, roleType } from '@/model/User';
 import NextAuth, { type DefaultSession } from 'next-auth';
 
 // session data에 custom data 추가 하기
 
-export type isPrivateType = 'false' | 'true';
-export type roleType = 'admin' | 'user';
+
  
 declare module "next-auth" {
   /**

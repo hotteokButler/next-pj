@@ -10,9 +10,9 @@ function generateDate() {  //랜덤 날짜 설정
   });
 }
 const User = [
-  { id: 'user01', nickname: 'james', image: faker.image.avatar() },
-  { id: 'user02', nickname: 'ruru', image: faker.image.avatar() },
-  { id: 'user03', nickname: '레오', image: faker.image.avatar() },
+  { id: 'user01', nickname: 'james', image: faker.image.avatar(), isPrivate: 'false', role: 'user' },
+  { id: 'user02', nickname: 'ruru', image: faker.image.avatar(), isPrivate: 'true', role: 'user' },
+  { id: 'user03', nickname: '레오', image: faker.image.avatar(), isPrivate: 'true', role: 'user' },
 ];
 const Posts = [];
 
@@ -58,6 +58,7 @@ export const handler = [
   http.get('/api/postRecommends', ({ request }) => {
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
+    console.log('home 추천 게시글');
     return HttpResponse.json([
       {
         postId: cursor + 1, //포스트 아이디

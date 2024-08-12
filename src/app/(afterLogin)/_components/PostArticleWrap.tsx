@@ -4,10 +4,10 @@
 import { PostConentWrap } from '@/components/style/post.style';
 import React from 'react'
 import { useRouter ,usePathname} from 'next/navigation';
-import { IData } from './Post';
+import { Post } from '@/model/Post';
 
-export default function PostArticleWrap({ children ,data }: { children: React.ReactNode , data : IData}) {
-  const {postId ,User :{id}} = data;
+export default function PostArticleWrap({ children ,post }: { children: React.ReactNode , post : Post}) {
+  const {postId ,User :{id}} = post;
   const router = useRouter();
   const pathname = usePathname();
   const pathnameArr = pathname.split('/');
