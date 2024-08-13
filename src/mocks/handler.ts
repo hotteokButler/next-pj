@@ -13,6 +13,7 @@ const User = [
   { id: 'user01', nickname: 'james', image: faker.image.avatar(), isPrivate: 'false', role: 'user' },
   { id: 'user02', nickname: 'ruru', image: faker.image.avatar(), isPrivate: 'true', role: 'user' },
   { id: 'user03', nickname: '레오', image: faker.image.avatar(), isPrivate: 'true', role: 'user' },
+  { id: 'user04', nickname: '지지', image: faker.image.avatar(), isPrivate: 'false', role: 'user' },
 ];
 const Posts = [];
 
@@ -104,6 +105,82 @@ export const handler = [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
           { imageId: 2, link: faker.image.urlLoremFlickr() },
           { imageId: 3, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+    ]);
+  }),
+  http.get('/api/followingPosts', ({ request }) => {
+    const url = new URL(request.url);
+    const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
+    console.log('home following 게시글');
+    return HttpResponse.json([
+      {
+        postId: cursor + 1, //포스트 아이디
+        User: User[0], //작성자
+        content: `${cursor + 1} Following Posts~!`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 2,
+        User: User[1],
+        content: `${cursor + 2} Following Posts~!`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 3,
+        User: User[0],
+        content: `${cursor + 3} Following Posts~!`,
+        Images: [],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 4,
+        User: User[2],
+        content: `${cursor + 4} Following Posts~!`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+          { imageId: 4, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 5,
+        User: User[3],
+        content: `${cursor + 5} Following Posts~!`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 6,
+        User: User[3],
+        content: `${cursor + 6} Following Posts~!`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 7,
+        User: User[1],
+        content: `${cursor + 7} Following Posts~!`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+          { imageId: 4, link: faker.image.urlLoremFlickr() },
         ],
         createdAt: generateDate(),
       },
