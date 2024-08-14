@@ -4,8 +4,7 @@ import * as S from '@/components/style/home.styled';
 import HomeFixedTab from '../_components/HomeFixedTab';
 import HomeFixedTabProvider from '../_components/HomeFixedTabProvider';
 import PostForm from '../_components/PostForm';
-import RecommendPosts from './_components/RecommendPosts';
-import FollowingPosts from './_components/FollowingPosts';
+import HomeTabDecider from './_components/HomeTabDecider';
 
 export default function Home() {
 
@@ -16,7 +15,7 @@ export default function Home() {
         <HomeFixedTab />
         <PostForm />
         {/* Posting 노출 */}
-        <RecommendPosts/>
+        <HomeTabDecider/>
       </S.HomeCon>
     </HomeFixedTabProvider>
   );
