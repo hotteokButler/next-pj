@@ -6,6 +6,7 @@ export const SearchFillterLi = styled.div`
   h4 {
     font-weight: 700;
     margin: 0 0 15px;
+    padding: 0;
   }
 `;
 

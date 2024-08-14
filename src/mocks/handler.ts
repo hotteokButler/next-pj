@@ -186,4 +186,82 @@ export const handler = [
       },
     ]);
   }),
+  http.get('/api/search/:tag', ({ request , params }) => {
+    // :tag => 검색 할 때 마다 바뀌는 값을 콜론을 붙여서 입력 (Url Parameter)
+    const url = new URL(request.url);
+    const {tag} = params;
+    const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
+    console.log('search result ');
+    return HttpResponse.json([
+      {
+        postId: cursor + 1, //포스트 아이디
+        User: User[0], //작성자
+        content: `${cursor + 1} 검색결과 ${tag}`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 2,
+        User: User[1],
+        content: `${cursor + 2} 검색결과 ${tag}`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 3,
+        User: User[0],
+        content: `${cursor + 3} 검색결과 ${tag}`,
+        Images: [],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 4,
+        User: User[2],
+        content: `${cursor + 4} 검색결과 ${tag}`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+          { imageId: 4, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 5,
+        User: User[3],
+        content: `${cursor + 5} 검색결과 ${tag}`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 6,
+        User: User[3],
+        content: `${cursor + 6} 검색결과 ${tag}`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+      {
+        postId: cursor + 7,
+        User: User[1],
+        content: `${cursor + 7} 검색결과 ${tag}`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+          { imageId: 3, link: faker.image.urlLoremFlickr() },
+          { imageId: 4, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: generateDate(),
+      },
+    ]);
+  }),
 ];

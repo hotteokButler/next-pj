@@ -3,33 +3,23 @@
 import ExploreMainCon from '../_components/ExploreMainCon';
 import Post from '../_components/Post';
 import SearchFixedTab from '../_components/SearchFixedTab';
+import SearchResult from './_components/SearchResult';
 
 
-interface IProps {
-  searchParams : {
-    q : string;
-    pf ?: string;
-    lf ?: string;
-  }
-}
+type Props = {
+  searchParams: {
+    q: string;
+    pf?: string;
+    lf?: string;
+  };
+};
 
-
-export default function Search({searchParams} : IProps) {
+export default function Search({searchParams} : Props) {
   
   return (
     <ExploreMainCon>
       <SearchFixedTab q={searchParams.q} />
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
+      <SearchResult searchParams={searchParams}/>
     </ExploreMainCon>
   );
 }
