@@ -4,14 +4,11 @@ import { ProfileImg } from '@/components/style/common/commonStyle';
 import * as S from '@/components/style/follow.styled';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import { User as IUser } from '@/model/User';
 
-interface IFollower {
-  id: string;
-  nickname: string;
-  image: string;
-}
 
-export default function Follow({ follower }: { follower: IFollower }) {
+
+export default function Follow({ follower }: { follower: IUser }) {
   const { data } = useSession();
 
   const onFollow: React.MouseEventHandler<HTMLButtonElement> = (e) => {
