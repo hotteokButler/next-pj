@@ -6,5 +6,5 @@ export interface Post {
   User: User;
   content: string;
   Images: PostImage[];
-  createdAt: Date | string;
+  createdAt: Date;
 }

@@ -1,10 +1,12 @@
 import { http, HttpResponse } from 'msw';
 import { faker } from '@faker-js/faker';
 
-function generateDate() {  //랜덤 날짜 설정
+function generateDate() {
+  //랜덤 날짜 설정
   const lastWeek = new Date(Date.now());
   lastWeek.setDate(lastWeek.getDate() - 7);
-  return faker.date.between({ // 지난 주 부터 오늘까지 임의의 날짜 설정
+  return faker.date.between({
+    // 지난 주 부터 오늘까지 임의의 날짜 설정
     from: lastWeek,
     to: Date.now(),
   });
@@ -23,10 +25,12 @@ export const handler = [
   http.post('/api/login', () => {
     console.log('로그인');
 
-    return HttpResponse.json( // json 형식으로 응답 보냄 (실제 보내지는 데이터)
+    return HttpResponse.json(
+      // json 형식으로 응답 보냄 (실제 보내지는 데이터)
       { id: 'anonymous02', nickname: 'anonymous', image: '/user_02.jpg', isPrivate: 'false', role: 'user' },
       {
-        headers: { // 헤더 설정
+        headers: {
+          // 헤더 설정
           'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
         },
       }
@@ -39,22 +43,25 @@ export const handler = [
     return new HttpResponse(
       null, // 보낼 데이터가 없을 때 new HttpRespose를 많이 씀
       {
-      headers: {
-        'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0',
-      },
-    });
+        headers: {
+          'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0',
+        },
+      }
+    );
   }),
   http.post('/api/users', async ({ request }) => {
     console.log('회원가입');
     // return HttpResponse.text(JSON.stringify('user_exists'), { //응답이 아니라 에러일때 또는 redirect일 때 status를 바꿔 줄 수 있음
     //   status: 403,
     // });
-    return HttpResponse.text(JSON.stringify('ok'), // text를 보낼 대는 HttpResponse.text를 많이 씀
-    {
-      headers: {
-        'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
-      },
-    });
+    return HttpResponse.text(
+      JSON.stringify('ok'), // text를 보낼 대는 HttpResponse.text를 많이 씀
+      {
+        headers: {
+          'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
+        },
+      }
+    );
   }),
   http.get('/api/postRecommends', ({ request }) => {
     const url = new URL(request.url);
@@ -186,10 +193,10 @@ export const handler = [
       },
     ]);
   }),
-  http.get('/api/search/:tag', ({ request , params }) => {
+  http.get('/api/search/:tag', ({ request, params }) => {
     // :tag => 검색 할 때 마다 바뀌는 값을 콜론을 붙여서 입력 (Url Parameter)
     const url = new URL(request.url);
-    const {tag} = params;
+    const { tag } = params;
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
     console.log('search result ');
     return HttpResponse.json([
@@ -264,10 +271,14 @@ export const handler = [
       },
     ]);
   }),
-  http.get('/api/users/:userId/posts', ({ request , params }) => {
+  http.get('/api/users/:userId', ({ request, params }) => {
+    const { userId } = params;
+    return HttpResponse.json(User[0]);
+  }),
+  http.get('/api/users/:userId/posts', ({ request, params }) => {
     // :tag => 검색 할 때 마다 바뀌는 값을 콜론을 붙여서 입력 (Url Parameter)
     const url = new URL(request.url);
-    const {userId} = params;
+    const { userId } = params;
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
     console.log(`${userId} Posts`);
     return HttpResponse.json([
@@ -342,9 +353,24 @@ export const handler = [
       },
     ]);
   }),
-  http.get('/api/users/:userId/posts/:postId/comments', ({ request ,params}) => {
+  http.get('/api/users/:userId/posts/:postId/', ({ request, params }) => {
+    const { userId, postId } = params;
+    return HttpResponse.json({
+      postId: 1, //포스트 아이디
+      User: User[0], //작성자
+      content: `${postId} 게시글의 내용`,
+      Images: [
+        { imageId: 1, link: faker.image.urlLoremFlickr() },
+        { imageId: 2, link: faker.image.urlLoremFlickr() },
+        { imageId: 3, link: faker.image.urlLoremFlickr() },
+        { imageId: 4, link: faker.image.urlLoremFlickr() },
+      ],
+      createdAt: generateDate(),
+    });
+  }),
+  http.get('/api/users/:userId/posts/:postId/comments', ({ request, params }) => {
     const url = new URL(request.url);
-    const {userId, postId} = params;
+    const { userId, postId } = params;
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
     console.log('게시글 답글');
     return HttpResponse.json([
@@ -417,6 +443,21 @@ export const handler = [
         ],
         createdAt: generateDate(),
       },
+    ]);
+  }),
+  http.get('api/followRecommends', ({ request }) => {
+    return HttpResponse.json(User);
+  }),
+  http.get('api/trends', ({ request }) => {
+    return HttpResponse.json([
+      //추후 해시테그 검색 결과
+      { tagId: 1, title: '트렌드01', count: 1200 },
+      { tagId: 2, title: '트렌드02', count: 1220 },
+      { tagId: 3, title: '트렌드03', count: 1230 },
+      { tagId: 4, title: '트렌드04', count: 1240 },
+      { tagId: 5, title: '트렌드05', count: 1250 },
+      { tagId: 6, title: '트렌드06', count: 1260 },
+      { tagId: 7, title: '트렌드07', count: 1270 },
     ]);
   }),
 ];
