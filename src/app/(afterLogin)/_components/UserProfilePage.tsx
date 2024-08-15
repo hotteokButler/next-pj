@@ -15,13 +15,6 @@ export default function UserProfilePage({children , ariaLabel} : IProp) {
     <ProfileFixedTabProvider>
       <ProfileFixedTab />
       <div aria-label={ ariaLabel ? ariaLabel : "user_article"}>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
       </div>
       {children && children}
     </ProfileFixedTabProvider>
