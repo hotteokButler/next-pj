@@ -449,6 +449,7 @@ export const handler = [
     return HttpResponse.json(User);
   }),
   http.get('api/trends', ({ request }) => {
+    console.log('trends');
     return HttpResponse.json([
       //추후 해시테그 검색 결과
       { tagId: 1, title: '트렌드01', count: 1200 },
