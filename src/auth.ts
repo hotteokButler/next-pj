@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { isPrivateType, roleType } from './app/_types/next-auth';
+import { isPrivateType, roleType } from '@/model/User';
 
 export const {
   handlers: { GET, POST },

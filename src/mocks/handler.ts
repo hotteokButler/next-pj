@@ -27,7 +27,7 @@ export const handler = [
 
     return HttpResponse.json(
       // json 형식으로 응답 보냄 (실제 보내지는 데이터)
-      { id: 'user01', nickname: 'annonymous', image: '/user_02.jpg', isPrivate: 'false', role: 'user' },
+      User[0],
       {
         headers: {
           // 헤더 설정
@@ -273,7 +273,9 @@ export const handler = [
   }),
   http.get('/api/users/:userId', ({ request, params }) => {
     const { userId } = params;
-    return HttpResponse.json(User[0]);
+    const found = User.find((v) => v.id === userId);
+    if (found) return HttpResponse.json(found);
+    else return HttpResponse.json({ message: 'no_such_user' }, { status: 404 });
   }),
   http.get('/api/users/:userId/posts', ({ request, params }) => {
     // 특정 사용자 게시글 (본인 포함)
@@ -357,7 +359,7 @@ export const handler = [
   http.get('/api/users/:userId/posts/:postId', ({ request, params }) => {
     const { userId, postId } = params;
     return HttpResponse.json({
-      postId:  1, //포스트 아이디
+      postId: 1, //포스트 아이디
       User: User[0], //작성자
       content: ` ${userId}의 게시글 ${postId} 상세 `,
       Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],

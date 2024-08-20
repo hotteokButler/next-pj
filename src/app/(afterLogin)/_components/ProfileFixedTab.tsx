@@ -8,11 +8,26 @@ import { useRouter } from 'next/navigation';
 import { User as IUser } from '@/model/User';
 import { BiSolidLock, BiSolidLockOpen } from 'react-icons/bi';
 import { ProfileWrap, ProfilePageImg, ProfileTxtWrap, ProfileFollowBtn } from '@/components/style/common/commonStyle';
+import { useQuery } from '@tanstack/react-query';
+import { getUser } from '../[username]/_lib/getUser';
 
-export default function ProfileFixedTab({userData } : {userData : IUser}) {
+export default function ProfileFixedTab({ username }: { username: string }) {
   const { tab, setTab } = useContext(ProfileFixedTabContext);
   const router = useRouter();
-  const user = userData;
+
+  const {
+    data: user,
+    isSuccess: userDataIsSuccess,
+    error,
+  } = useQuery<IUser, Object, IUser, [_1: string, _2: string]>({
+    queryKey: ['users', username],
+    queryFn: getUser,
+    staleTime: 60 * 1000,
+    gcTime: 5 * 60 * 1000,
+  });
+
+  console.log(error);
+
   const onClickBackBtn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     router.back();
@@ -21,20 +36,39 @@ export default function ProfileFixedTab({userData } : {userData : IUser}) {
   const onClickMain = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setTab('main');
-    router.replace(`/${user.id}`);
+    userDataIsSuccess && router.replace(`/${user.id}`);
   };
   const onClickWithReply = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setTab('with_replies');
-    router.replace(`/${user.id}/with_replies`);
+    userDataIsSuccess && router.replace(`/${user.id}/with_replies`);
   };
   const onClickLikes = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setTab('likes');
-    router.replace(`/${user.id}/likes`);
+    userDataIsSuccess && router.replace(`/${user.id}/likes`);
   };
 
-  if(!user) return;
+  if (error)
+    return (
+      <>
+        <S.FixedTabWrap>
+          <S.FixedTabBackBtn onClick={onClickBackBtn}>
+            <GoArrowLeft />
+          </S.FixedTabBackBtn>
+          <S.FixedTabH4>프로필</S.FixedTabH4>
+        </S.FixedTabWrap>
+        <ProfileWrap>
+          <ProfilePageImg>
+          </ProfilePageImg>
+          <ProfileTxtWrap>
+            <b>{username} 계정이 존재하지 않습니다.</b>
+          </ProfileTxtWrap>
+        </ProfileWrap>
+      </>
+    );
+
+  if (!user) return null;
 
   return (
     <>

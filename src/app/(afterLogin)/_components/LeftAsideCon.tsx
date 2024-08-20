@@ -14,6 +14,8 @@ export default function LeftAsideCon() {
   const segment = useSelectedLayoutSegment();
   const { data } = useSession();
 
+  console.log(data);
+
   return (
     <S.LeftSideWrap>
       <div aria-label='side_main_menu'>
