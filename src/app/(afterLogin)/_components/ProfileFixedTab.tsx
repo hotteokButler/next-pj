@@ -5,19 +5,14 @@ import React, { useContext } from 'react';
 import { GoArrowLeft } from 'react-icons/go';
 import { ProfileFixedTabContext } from './ProfileFixedTabProvider';
 import { useRouter } from 'next/navigation';
+import { User as IUser } from '@/model/User';
 import { BiSolidLock, BiSolidLockOpen } from 'react-icons/bi';
 import { ProfileWrap, ProfilePageImg, ProfileTxtWrap, ProfileFollowBtn } from '@/components/style/common/commonStyle';
 
-export default function ProfileFixedTab() {
+export default function ProfileFixedTab({userData } : {userData : IUser}) {
   const { tab, setTab } = useContext(ProfileFixedTabContext);
   const router = useRouter();
-  const user = {
-    // 임시
-    id: 'hotteokButler',
-    nickname: '호떡집사',
-    image: '/hotteokButler.jpg',
-    private: true,
-  };
+  const user = userData;
   const onClickBackBtn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     router.back();
@@ -39,6 +34,7 @@ export default function ProfileFixedTab() {
     router.replace(`/${user.id}/likes`);
   };
 
+  if(!user) return;
 
   return (
     <>
@@ -55,7 +51,7 @@ export default function ProfileFixedTab() {
         <ProfileTxtWrap>
           <b>
             {user.nickname}
-            {user.private ? <BiSolidLock /> : <BiSolidLockOpen />}
+            {user.isPrivate ? <BiSolidLock /> : <BiSolidLockOpen />}
           </b>
           <span>&#64;{user.id}</span>
         </ProfileTxtWrap>

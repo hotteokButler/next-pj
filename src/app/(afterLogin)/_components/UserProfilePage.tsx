@@ -7,6 +7,8 @@ import Post from './Post';
 import { Post as IPost } from '@/model/Post';
 import { useQuery } from '@tanstack/react-query';
 import { getUserPosts } from '../[username]/_lib/getUserPosts';
+import { getUser } from '../[username]/_lib/getUser';
+import { User as IUser } from '@/model/User';
 
 type IProp = {
   children?: React.ReactNode;
@@ -16,6 +18,18 @@ type IProp = {
 
 export default function UserProfilePage({ children, ariaLabel, params }: IProp) {
   const { username } = params;
+
+  const { data: profileData, isSuccess: profileDataIsSuccess } = useQuery<
+    IUser,
+    Object,
+    IUser,
+    [_1: string, _2: string]
+  >({
+    queryKey: ['users', username],
+    queryFn: getUser,
+    staleTime: 60 * 1000,
+    gcTime: 5 * 60 * 1000,
+  });
 
   const { data: postData, isSuccess: postIsSuccess } = useQuery<
     IPost[],
@@ -34,7 +48,7 @@ export default function UserProfilePage({ children, ariaLabel, params }: IProp) 
 
   return (
     <ProfileFixedTabProvider>
-      <ProfileFixedTab />
+      {profileDataIsSuccess && <ProfileFixedTab userData={profileData}/>}
       <div aria-label={ariaLabel ? ariaLabel : 'user_article'}>
         {postIsSuccess ? (
           <>
