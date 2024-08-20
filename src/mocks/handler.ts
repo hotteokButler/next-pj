@@ -12,7 +12,7 @@ function generateDate() {
   });
 }
 const User = [
-  { id: 'user01', nickname: 'james', image: faker.image.avatar(), isPrivate: 'false', role: 'user' },
+  { id: 'user01', nickname: 'annonymous', image: '/user_02.jpg', isPrivate: 'false', role: 'user' },
   { id: 'user02', nickname: 'ruru', image: faker.image.avatar(), isPrivate: 'true', role: 'user' },
   { id: 'user03', nickname: '레오', image: faker.image.avatar(), isPrivate: 'true', role: 'user' },
   { id: 'user04', nickname: '지지', image: faker.image.avatar(), isPrivate: 'false', role: 'user' },
@@ -27,7 +27,7 @@ export const handler = [
 
     return HttpResponse.json(
       // json 형식으로 응답 보냄 (실제 보내지는 데이터)
-      { id: 'anonymous02', nickname: 'anonymous', image: '/user_02.jpg', isPrivate: 'false', role: 'user' },
+      { id: 'user01', nickname: 'annonymous', image: '/user_02.jpg', isPrivate: 'false', role: 'user' },
       {
         headers: {
           // 헤더 설정
