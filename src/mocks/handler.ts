@@ -354,6 +354,16 @@ export const handler = [
       },
     ]);
   }),
+  http.get('/api/users/:userId/posts/:postId', ({ request, params }) => {
+    const { userId, postId } = params;
+    return HttpResponse.json({
+      postId:  1, //포스트 아이디
+      User: User[0], //작성자
+      content: ` ${userId}의 게시글 ${postId} 상세 `,
+      Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+      createdAt: generateDate(),
+    });
+  }),
   http.get('/api/users/:userId/posts/:postId/comments', ({ request, params }) => {
     // 게시글 답글
     const url = new URL(request.url);
@@ -449,5 +459,4 @@ export const handler = [
       { tagId: 7, title: '트렌드07', count: 1270 },
     ]);
   }),
-  
 ];
