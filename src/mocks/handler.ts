@@ -276,6 +276,7 @@ export const handler = [
     return HttpResponse.json(User[0]);
   }),
   http.get('/api/users/:userId/posts', ({ request, params }) => {
+    // 특정 사용자 게시글 (본인 포함)
     // :tag => 검색 할 때 마다 바뀌는 값을 콜론을 붙여서 입력 (Url Parameter)
     const url = new URL(request.url);
     const { userId } = params;
@@ -354,6 +355,7 @@ export const handler = [
     ]);
   }),
   http.get('/api/users/:userId/posts/:postId/comments', ({ request, params }) => {
+    // 게시글 답글
     const url = new URL(request.url);
     const { userId, postId } = params;
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
@@ -431,6 +433,7 @@ export const handler = [
     ]);
   }),
   http.get('api/followRecommends', ({ request }) => {
+    console.log('follow 추천 대상');
     return HttpResponse.json(User);
   }),
   http.get('api/trends', ({ request }) => {
